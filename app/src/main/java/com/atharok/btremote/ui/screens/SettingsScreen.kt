@@ -77,6 +77,7 @@ fun SettingsScreen(
 
     val remoteSettings by settingsViewModel
         .remoteSettingsFlow.collectAsStateWithLifecycle(RemoteSettings())
+    val keyboardLanguageLabels = KeyboardLanguage.entries.associateWith { stringResource(it.language) }
 
     // Advanced Options
     val showRemoteButtonsInNotification: Boolean by settingsViewModel.showRemoteButtonsInNotificationFlow.collectAsStateWithLifecycle(initialValue = false)
@@ -118,7 +119,7 @@ fun SettingsScreen(
                 value = appearanceSettings.theme,
                 onValueChange = { settingsViewModel.changeTheme(it) },
                 items = ThemeEntity.entries,
-                convertValueToString = { context.getString(it.stringRes) },
+                convertValueToString = { stringResource(it.stringRes) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
@@ -244,7 +245,7 @@ fun SettingsScreen(
                 value = remoteSettings.physicalVolumeUpButtonAction,
                 onValueChange = { settingsViewModel.savePhysicalVolumeUpButtonAction(it) },
                 items = PhysicalVolumeButtonAction.entries,
-                convertValueToString = { context.getString(it.stringRes) },
+                convertValueToString = { stringResource(it.stringRes) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
@@ -259,7 +260,7 @@ fun SettingsScreen(
                 value = remoteSettings.physicalVolumeDownButtonAction,
                 onValueChange = { settingsViewModel.savePhysicalVolumeDownButtonAction(it) },
                 items = PhysicalVolumeButtonAction.entries,
-                convertValueToString = { context.getString(it.stringRes) },
+                convertValueToString = { stringResource(it.stringRes) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
@@ -363,8 +364,8 @@ fun SettingsScreen(
                 dialogMessage = stringResource(id = R.string.keyboard_language_info),
                 value = remoteSettings.keyboardLanguage,
                 onValueChange = { settingsViewModel.changeKeyboardLanguage(it) },
-                items = KeyboardLanguage.entries.sortedBy { context.getString(it.language) },
-                convertValueToString = { context.getString(it.language) },
+                items = KeyboardLanguage.entries.sortedBy { keyboardLanguageLabels.getValue(it) },
+                convertValueToString = { keyboardLanguageLabels.getValue(it) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
@@ -614,7 +615,7 @@ private fun <T> SettingsListDialog(
     value: T,
     onValueChange: (T) -> Unit,
     items: List<T>,
-    convertValueToString: (T) -> String,
+    convertValueToString: @Composable (T) -> String,
     modifier: Modifier = Modifier
 ) {
     var isShowingDialog by remember { mutableStateOf(false) }
@@ -637,7 +638,7 @@ private fun <T> StatelessSettingsListDialog(
     value: T,
     onValueChange: (T) -> Unit,
     items: List<T>,
-    convertValueToString: (T) -> String,
+    convertValueToString: @Composable (T) -> String,
     showDialog: Boolean,
     onShowDialogChange: (Boolean) -> Unit,
     @StringRes title: Int,

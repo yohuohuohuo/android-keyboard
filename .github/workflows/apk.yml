@@ -41,6 +41,9 @@ jobs:
           java-version: "21"
           cache: "gradle"
 
+      - name: Install Android SDK
+        run: sdkmanager "platforms;android-37.2" "build-tools;36.0.0"
+
       - name: Build
         run: |
           echo ${{ secrets.STORE }} | base64 -d > upload.jks

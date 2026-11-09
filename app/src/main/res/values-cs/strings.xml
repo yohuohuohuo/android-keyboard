@@ -10,7 +10,7 @@
     -->
     <string name="app_name">YoRemote</string>
     <string name="close">Zavřít</string>
-    <string name="error">Error</string>
+    <string name="error">Chyba</string>
     <!-- Bluetooth Support -->
     <string name="bluetooth_not_supported_message">Toto zařízení nepodporuje Bluetooth.</string>
     <!-- Bluetooth Permission -->
@@ -18,7 +18,6 @@
     <string name="bluetooth_permission_not_granted">Oprávnění nebylo uděleno</string>
     <string name="bluetooth_permission_message">Musíte povolit přístup k Bluetooth.</string>
     <string name="bluetooth_permission_button">Povolit</string>
-    <string name="bluetooth_permission_denied_message">Zakázali jste přístup k Bluetoooth.</string>
     <!-- Bluetooth Activation -->
     <string name="activation">Aktivace</string>
     <string name="bluetooth_disabled_info">Bluetooth vypnuto</string>
@@ -37,13 +36,10 @@
     <string name="bluetooth_device_connecting_message">Pokus o připojení k \"%1$s\" …</string>
     <string name="bluetooth_device_disconnecting_message">Odpojování od \"%1$s\"…</string>
     <string name="bluetooth_failed_to_register_app_message">Nepodařilo se registrovat aplikaci. Ujistěte se, že na pozadí neběží jiné služby Bluetooth. Pokud problém přetrvává, je možné že byl Bluetooth proces přerušen. Zkuste vypnout a zapnout Bluetooth.</string>
-    <string name="bluetooth_failed_to_connect_to_device">Připojení k zařízení selhalo.</string>
-    <string name="bluetooth_failed_try_again">Prosím, zkuste to znovu.</string>
     <!-- Remote Screen -->
     <string name="remote">Ovladač</string>
     <string name="more">Více</string>
     <string name="disconnect">Odpojit</string>
-    <string name="direction_arrows">Šipky</string>
     <!-- Settings -->
     <string name="settings">Nastavení</string>
     <string name="appearance">Vzhled</string>
@@ -52,7 +48,7 @@
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
     <string name="theme_black">Použít čistě černou pro tmavý motiv</string>
-    <string name="theme_black_oled_info">Spotřebovává méně energine na OLED obrazovkách</string>
+    <string name="theme_black_oled_info">Spotřebovává méně energie na OLED obrazovkách</string>
     <string name="dynamic_colors">Dynamické barvy</string>
     <string name="mouse_pointer_speed">Rychlost kurzoru</string>
     <string name="invert_mouse_scrolling_direction">Obrátit směr posuvu</string>
@@ -92,7 +88,6 @@
     <string name="mute">Ztišit</string>
     <string name="home">Domů</string>
     <string name="back">Zpět</string>
-    <string name="standby">Standby</string>
     <string name="next_channel">Další kanál</string>
     <string name="previous_channel">Předchozí kanál</string>
     <!-- Mouse -->
@@ -102,7 +97,6 @@
     <string name="mouse_click_middle">Kliknutí prostředním tlačítkem myši</string>
     <string name="mouse_wheel_up">Přejeďte prstem nahoru</string>
     <string name="mouse_wheel_down">Přejeďte prstem dolů</string>
-    <string name="mouse_pad_tap">Klepněte</string>
     <!-- Notification -->
     <string name="notification_channel_name">Bluetooth HID připojení</string>
     <string name="connected_on">Připojeno k %1$s</string>
@@ -125,7 +119,6 @@
     <string name="help_pairing_missing_device_message_1">Pokud se zařízení, které se snažíte spárovat, nezobrazuje, postupujte podle následujích intrukcí:</string>
     <string name="help_pairing_missing_device_check_2">• Ujistěte se, že je vzdálené zařízení viditělné.</string>
     <string name="help_pairing_missing_device_check_location_for_android_11_or_less">• Ujistěte se, že jsou povoleny služby pro získávání polohy na tomto zařízení.</string>
-    <string name="help_pairing_connection_initialization_error_message_1">Pokud jste úspěšně spárovali obě zařízení, ale objevila se chyba \"%1$s\" nebo \"%2$s\":</string>
     <string name="help_pairing_device_failed_connection_message_1">Pokud jste úspěšně spárovali obě zařízení, ale nejste schopni se připojit, postupujte podle následujích intrukcí:</string>
     <string name="help_remote_control_buttons_are_not_working_title">Tlačítka ovládání</string>
     <string name="help_remote_control_buttons_are_not_working_message">Pokud klávesnice, myš, nebo něktěrá tlačítka nefungují, postupujte podle následujích intrukcí:</string>
@@ -133,4 +126,112 @@
     <string name="help_remote_control_buttons_are_not_working_check_3">• Zrušte párování zařízení, a to jak na tomto zařízení, tak na vzdáleném zařázení.</string>
     <string name="help_remote_control_buttons_are_not_working_check_4">• Znovu spárujte zařízení za použití této aplikace.</string>
     <string name="help_keyboard_wrong_character_sent_message">Pokud zadávané znaky neodpovídají těm zadaným, musíte nastavit fyzickou klávesnici na vzdáleném zařízení tak, aby odpovídala klávesnici zvolené v nastavení.</string>
+    <string name="open">Otevřít</string>
+    <string name="retry">Zkusit znovu</string>
+    <string name="unpair">Zrušit párování</string>
+    <string name="unpair_device_warning_message">Párování tohoto zařízení s vaším zařízením bude zcela zrušeno. Opravdu chcete pokračovat?</string>
+    <string name="unpair_device_successful">Párování zařízení bylo úspěšně zrušeno.</string>
+    <string name="unpair_device_failure">Chyba! Párování zařízení se nepodařilo zrušit.</string>
+    <string name="automatic_connect">Automatické připojení</string>
+    <string name="enabled_automatic_connection_message">Chcete se k tomuto zařízení automaticky připojovat při spuštění aplikace?</string>
+    <string name="disabled_automatic_connection_message">Chcete vypnout automatické připojování?</string>
+    <string name="automatic_shorten">Automaticky</string>
+    <string name="favorites">Oblíbené</string>
+    <string name="add_to_favorites">Přidat do oblíbených</string>
+    <string name="remove_from_favorites">Odebrat z oblíbených</string>
+    <string name="no_device_registered">V tomto zařízení není zaregistrováno žádné zařízení.</string>
+    <string name="pairing_from_the_remote_device">Párování ze vzdáleného zařízení</string>
+    <string name="name_of_this_device">Název tohoto zařízení: %1$s.</string>
+    <string name="pairing_from_a_remote_device_intro_title">Průvodce párováním ze vzdáleného zařízení</string>
+    <string name="pairing_from_a_remote_device_intro_content">Na některých zařízeních může být vypnutá viditelnost Bluetooth, což aplikaci brání v jejich nalezení. Tento průvodce vám pomůže problém vyřešit a vysvětlí, jak zařízení spárovat přímo ze vzdáleného zařízení.</string>
+    <string name="pairing_from_a_remote_device_step_1_title">1. Zapněte viditelnost Bluetooth</string>
+    <string name="pairing_from_a_remote_device_step_1_content_1">Nejprve musíte na tomto zařízení zapnout viditelnost Bluetooth.</string>
+    <string name="pairing_from_a_remote_device_step_1_content_2">Toto zařízení by mělo být pro ostatní zařízení viditelné pod názvem: %1$s.</string>
+    <string name="enabled_bluetooth_visibility">Viditelnost Bluetooth je zapnutá</string>
+    <string name="pairing_from_a_remote_device_step_2_title">2. Spárujte obě zařízení</string>
+    <string name="pairing_from_a_remote_device_step_2_content_1">Na vzdáleném zařízení:</string>
+    <string name="pairing_from_a_remote_device_step_2_content_2">- Otevřete nastavení Bluetooth.\n- Vyberte možnost spárování nového zařízení.\n- Zařízení „%1$s“ by se mělo zobrazit v seznamu dostupných zařízení.\n- Vyberte zařízení „%1$s“ a zahajte párování.</string>
+    <string name="pairing_from_a_remote_device_step_2_content_3">Na obou zařízeních by se měla zobrazit žádost o potvrzení párování. Pro dokončení párování Bluetooth ji musíte přijmout na obou zařízeních.</string>
+    <string name="pairing_from_a_remote_device_step_2_content_4">Pokud se žádná žádost o potvrzení nezobrazí, restartujte Bluetooth na vzdáleném zařízení a zopakujte předchozí kroky.</string>
+    <string name="pairing_from_a_remote_device_step_3_title">3. Odpojte zařízení</string>
+    <string name="pairing_from_a_remote_device_step_3_content_1">Pokud párování proběhlo úspěšně, zařízení s Androidem by se mělo automaticky připojit ke vzdálenému zařízení. Toto připojení však nepoužívá protokol HID (Human Interface Device), což brání fungování dálkového ovládání. Pro vyřešení problému:</string>
+    <string name="pairing_from_a_remote_device_step_3_content_2">- Přejděte do nastavení Bluetooth na svém zařízení.\n- Ručně odpojte vzdálené zařízení.</string>
+    <string name="open_bluetooth_settings">Otevřít nastavení Bluetooth</string>
+    <string name="pairing_from_a_remote_device_step_4_title">4. Dokončení</string>
+    <string name="pairing_from_a_remote_device_step_4_content">Pokud jste provedli všechny předchozí kroky, párování proběhlo úspěšně a obě zařízení jste odpojili, můžete vybrat tlačítko „%1$s“. Vzdálené zařízení by se mělo zobrazit v seznamu spárovaných zařízení. Vyberte jej a vytvořte připojení pomocí protokolu HID.</string>
+    <string name="done">Hotovo</string>
+    <string name="unknown">neznámé</string>
+    <string name="enter_bluetooth_address_manually">Zadat adresu Bluetooth ručně</string>
+    <string name="bluetooth_address">Adresa Bluetooth</string>
+    <string name="bluetooth_address_prompt">Zadejte adresu Bluetooth vzdáleného zařízení:</string>
+    <string name="bluetooth_address_wrong_format">Zadaná adresa má nesprávný formát. Musí obsahovat 6 dvojic šestnáctkových znaků.\nPříklad: 00:1A:2B:3C:4D:5E.</string>
+    <string name="more_buttons">Další tlačítka</string>
+    <string name="connect">Připojit</string>
+    <string name="media_controls">Ovládání médií</string>
+    <string name="full_screen">Celá obrazovka</string>
+    <string name="mouse_scroll_speed">Rychlost posouvání</string>
+    <string name="use_the_gyroscope_to_control_the_mouse">Používat gyroskop k ovládání myši</string>
+    <string name="integrate_advanced_keyboard_into_the_view">Začlenit rozšířenou klávesnici do zobrazení</string>
+    <string name="use_minimalist_interface">Používat minimalistické rozhraní</string>
+    <string name="use_mouse_navigation_by_default">Ve výchozím nastavení používat navigaci myší</string>
+    <string name="minimalist_interface_info">Nezobrazuje tlačítka televizních kanálů</string>
+    <string name="navigation_mode">Režim navigace</string>
+    <string name="d_pad">Směrový ovladač</string>
+    <string name="d_pad_description">Navigace pomocí směrových tlačítek</string>
+    <string name="touchpad">Dotyková plocha</string>
+    <string name="touchpad_description">Navigace pomocí dotykových gest</string>
+    <string name="use_enter_for_selection_title">Používat klávesu Enter pro výběr</string>
+    <string name="use_enter_for_selection_summary">Tuto možnost zapněte pouze tehdy, pokud tlačítko výběru nefunguje</string>
+    <string name="assign_action_volume_up_button">Přiřadit akci tlačítku zvýšení hlasitosti</string>
+    <string name="assign_action_volume_down_button">Přiřadit akci tlačítku snížení hlasitosti</string>
+    <string name="advanced_options">Pokročilé možnosti</string>
+    <string name="show_remote_buttons_in_notification">Zobrazovat tlačítka ovládání v oznámení</string>
+    <string name="hide_bluetooth_activation_button">Skrýt tlačítko zapnutí Bluetooth při spuštění aplikace</string>
+    <string name="code_version">Verze %1$s</string>
+    <string name="default_option">Výchozí</string>
+    <string name="advanced_keyboard">Rozšířená klávesnice</string>
+    <string name="keyboard_portuguese">Portugalština</string>
+    <string name="keyboard_portuguese_br">Portugalština (Brazílie)</string>
+    <string name="keyboard_greek">Řečtina</string>
+    <string name="keyboard_turkish">Turečtina</string>
+    <string name="keyboard_hebrew">Hebrejština</string>
+    <string name="keyboard_bulgarian">Bulharština</string>
+    <string name="keyboard_ukrainian">Ukrajinština</string>
+    <string name="keyboard_persian">Perština</string>
+    <string name="keyboard_arabic">Arabština</string>
+    <string name="keyboard_tab">Tabulátor</string>
+    <string name="space_bar">Mezerník</string>
+    <string name="shift">Shift</string>
+    <string name="ctrl">Ctrl</string>
+    <string name="page_up">O stránku nahoru</string>
+    <string name="page_down">O stránku dolů</string>
+    <string name="play_pause">Přehrát / Pozastavit</string>
+    <string name="stop">Zastavit</string>
+    <string name="repeat">Opakovat</string>
+    <string name="previous_track">Předchozí skladba</string>
+    <string name="next_track">Další skladba</string>
+    <string name="rewind">Přetočit zpět</string>
+    <string name="forward">Přetočit vpřed</string>
+    <string name="volume_up">Hlasitost +</string>
+    <string name="volume_down">Hlasitost -</string>
+    <string name="brightness_up">Jas +</string>
+    <string name="brightness_down">Jas -</string>
+    <string name="power">Napájení</string>
+    <string name="menu">Nabídka</string>
+    <string name="closed_captions">Titulky</string>
+    <string name="screenshot">Snímek obrazovky</string>
+    <string name="tv">Televize</string>
+    <string name="red_menu_button">Červená</string>
+    <string name="green_menu_button">Zelená</string>
+    <string name="blue_menu_button">Modrá</string>
+    <string name="yellow_menu_button">Žlutá</string>
+    <string name="connected_off">Žádná připojená zařízení</string>
+    <string name="information">Informace</string>
+    <string name="help_info_message">Pokud narazíte na potíže, podívejte se do nápovědy.</string>
+    <string name="help_info_hid_service_not_initialized_message">Služba HID nebyla inicializována. Podívejte se do nápovědy.</string>
+    <string name="help_remote_control_buttons_are_not_working_message_2">Každá aplikace používající protokol HID může využívat jiný profil. Pokud jste zařízení dříve spárovali pomocí jiné aplikace, může být nutné je znovu spárovat, aby se profil obnovil. Bez tohoto kroku nemusí tlačítka fungovat podle očekávání nebo mohou odesílat nesprávné hodnoty.</string>
+    <string name="help_hid_service_not_initialized_title">Služba HID nebyla inicializována</string>
+    <string name="help_hid_service_not_initialized_message_1">Pokud zpráva uvádí, že služba HID nebyla inicializována, přejděte do možností pro vývojáře na svém zařízení a vyhledejte možnost „Zakázat profil zařízení Bluetooth HID“:</string>
+    <string name="help_hid_service_not_initialized_message_2">• Pokud je tato možnost dostupná, vypněte ji a poté restartujte zařízení. Po restartování by měl profil HID fungovat normálně.</string>
+    <string name="help_hid_service_not_initialized_message_3">• Pokud tato možnost není dostupná, vaše zařízení možná nepodporuje profil HID. V takovém případě bohužel na tomto zařízení nebudete moci tuto aplikaci používat.</string>
 </resources>

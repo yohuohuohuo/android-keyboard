@@ -19,7 +19,6 @@
     <string name="bluetooth_permission_not_granted">Η άδεια απορρίφθηκε</string>
     <string name="bluetooth_permission_message">Πρέπει να δώσετε πρόσβαση στο Bluetooth.</string>
     <string name="bluetooth_permission_button">Πρόσβαση</string>
-    <string name="bluetooth_permission_denied_message">Απορρίψατε την πρόσβαση στο Bluetooth.</string>
     <!-- Bluetooth Activation -->
     <string name="activation">Ενεργοποίηση</string>
     <string name="bluetooth_disabled_info">Το Bluetooth είναι ανενεργό</string>
@@ -28,7 +27,6 @@
     <!-- Bluetooth Bonded Devices -->
     <string name="devices">Συσκευές</string>
     <string name="paired_devices">Συζευγμένες συσκευές</string>
-    <string name="unpair_device">Αποσύζευξη συσκευής</string>
     <string name="unpair">Αποσύζευξη</string>
     <string name="unpair_device_warning_message">Αυτή η συσκευή θα αποσυνδεθεί πλήρως από τη συσκευή σας. Θέλετε πραγματικά να συνεχίσετε;</string>
     <!-- Bluetooth Pairing -->
@@ -41,13 +39,10 @@
     <string name="bluetooth_device_connecting_message">Σύνδεση στη \"%1$s\" συσκευή…</string>
     <string name="bluetooth_device_disconnecting_message">Αποσύνδεση \"%1$s\"…</string>
     <string name="bluetooth_failed_to_register_app_message">Αποτυχία εγγραφής της εφαρμογής. Βεβαιωθείτε ότι καμία άλλη υπηρεσία Bluetooth δεν εκτελείται στο παρασκήνιο. Εάν το σφάλμα παραμένει, είναι πιθανό η διαδικασία Bluetooth να διακόπηκε απροσδόκητα. Για να διορθώσετε αυτό το πρόβλημα, απενεργοποιήστε το Bluetooth στη συσκευή σας και, στη συνέχεια, ενεργοποιήστε το ξανά.</string>
-    <string name="bluetooth_failed_to_connect_to_device">Η προσπάθεια σύνδεσης με την απομακρυσμένη συσκευή απέτυχε.</string>
-    <string name="bluetooth_failed_try_again">Προσπαθείστε ξανά.</string>
     <!-- Remote Screen -->
     <string name="remote">Χειριστήριο</string>
     <string name="more">Περισσότερα</string>
     <string name="disconnect">Αποσύνδεση</string>
-    <string name="direction_arrows">Βέλη κατεύθυνσης</string>
     <!-- Settings -->
     <string name="settings">Ρυθμίσεις</string>
     <string name="appearance">Εμφάνιση</string>
@@ -90,12 +85,8 @@
     <string name="escape">Esc</string>
     <string name="delete">Delete</string>
     <string name="space_bar">Πλήκτρο Space Bar</string>
-    <string name="print_screen">Πλήκτρο Print Screen</string>
     <string name="shift">Shift</string>
-    <string name="meta">Meta</string>
     <string name="ctrl">Ctrl</string>
-    <string name="alt">Alt</string>
-    <string name="alt_gr">Alt Gr</string>
     <!-- Remote button description -->
     <string name="pick">Επιλογή</string>
     <string name="up">Πάνω</string>
@@ -109,7 +100,6 @@
     <string name="mute">Σίγαση</string>
     <string name="home">Αρχική</string>
     <string name="back">Πίσω</string>
-    <string name="standby">Αναμονή</string>
     <string name="next_channel">Επόμενο κανάλι</string>
     <string name="previous_channel">Προηγούμενο κανάλι</string>
     <string name="power">Ισχύς</string>
@@ -122,7 +112,6 @@
     <string name="mouse_click_middle">Μεσαίο κλικ</string>
     <string name="mouse_wheel_up">Σύρσιμο επάνω</string>
     <string name="mouse_wheel_down">Σύρσιμο κάτω</string>
-    <string name="mouse_pad_tap">Πάτημα</string>
     <!-- Notification -->
     <string name="notification_channel_name">Σύνδεση Bluetooth HID</string>
     <string name="connected_on">Συνδέθηκε στο %1$s</string>
@@ -145,7 +134,6 @@
     <string name="help_pairing_missing_device_message_1">Εάν η συσκευή με την οποία θέλετε να πραγματοποιήσετε σύζευξη δεν εμφανίζεται, ακολουθήστε τις παρακάτω οδηγίες:</string>
     <string name="help_pairing_missing_device_check_2">• Βεβαιωθείτε ότι η ορατότητα Bluetooth είναι ενεργοποιημένη στην απομακρυσμένη συσκευή.</string>
     <string name="help_pairing_missing_device_check_location_for_android_11_or_less">• Βεβαιωθείτε ότι οι υπηρεσίες τοποθεσίας είναι ενεργοποιημένες στη συσκευή σας.</string>
-    <string name="help_pairing_connection_initialization_error_message_1">Εάν έχετε αντιστοιχίσει επιτυχώς και τις δύο συσκευές αλλά αντιμετωπίζετε σφάλματα \"%1$s\" ή \"%2$s\":</string>
     <string name="help_pairing_device_failed_connection_message_1">Εάν έχετε αντιστοιχίσει επιτυχώς και τις δύο συσκευές, αλλά δεν μπορείτε να συνδεθείτε στην απομακρυσμένη συσκευή, φροντίστε να ακολουθήσετε τις παρακάτω οδηγίες:</string>
     <string name="help_remote_control_buttons_are_not_working_title">Κουμπιά τηλεχειριστηρίου</string>
     <string name="help_remote_control_buttons_are_not_working_message">Εάν το πληκτρολόγιο, το ποντίκι ή ορισμένα κουμπιά δεν λειτουργούν, ακολουθήστε τις παρακάτω οδηγίες:</string>
@@ -172,7 +160,6 @@
     <string name="unknown">άγνωστο</string>
     <string name="enter_bluetooth_address_manually">Χειροκίνητη εισαγωγή διεύθυνσης Bluetooth</string>
     <string name="bluetooth_address_prompt">Εισάγετε τη διεύθυνση Bluetooth της απομακρυσμένης συσκευής:</string>
-    <string name="user_interface">Διεπαφή</string>
     <string name="minimalist_interface_info">Δεν εμφανίζει τα κουμπιά των τηλεοπτικών καναλιών</string>
     <string name="navigation_mode">Λειτουργία Πλοήγησης</string>
     <string name="d_pad">Χειριστήριο D-pad</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="direction_arrows">Richtungspfeile</string>
     <string name="next_channel">Nächster Kanal</string>
     <string name="previous_channel">Vorheriger Kanal</string>
     <string name="mouse">Maus</string>
@@ -9,7 +8,6 @@
     <string name="mouse_click_middle">Mittelklick</string>
     <string name="mouse_wheel_up">Nach oben wischen</string>
     <string name="mouse_wheel_down">Nach unten wischen</string>
-    <string name="mouse_pad_tap">Tippen</string>
     <string name="notification_channel_name">Bluetooth-HID-Verbindung</string>
     <string name="connected_on">Verbunden mit %1$s</string>
     <string name="help">Hilfe</string>
@@ -23,14 +21,12 @@
     <string name="bluetooth_permission_not_granted">Berechtigung nicht erteilt</string>
     <string name="bluetooth_permission_message">Du musst den Zugriff auf Bluetooth autorisieren.</string>
     <string name="bluetooth_permission_button">Autorisieren</string>
-    <string name="bluetooth_permission_denied_message">Du hast den Bluetooth-Zugriff verweigert.</string>
     <string name="activation">Aktivierung</string>
     <string name="bluetooth_disabled_info">Bluetooth deaktiviert</string>
     <string name="bluetooth_disabled_message">Bluetooth muss auf deinem Gerät aktiviert sein, um eine Verbindung mit dem entfernten Gerät herstellen zu können.</string>
     <string name="bluetooth_enabled_button">Bluetooth aktivieren</string>
     <string name="devices">Geräte</string>
     <string name="paired_devices">Gekoppelte Geräte</string>
-    <string name="unpair_device">Gerät entkoppeln</string>
     <string name="pairing_a_device">Ein Gerät koppeln</string>
     <string name="available_devices">Verfügbare Geräte</string>
     <string name="bluetooth_pairing_device_not_found">Es wurde kein Gerät gefunden.</string>
@@ -80,9 +76,7 @@
     <string name="home">Zuhause</string>
     <string name="back">Zurück</string>
     <string name="app_name">YoRemote</string>
-    <string name="standby">Bereitschaft</string>
     <string name="help_remote_control_buttons_are_not_working_title">Tasten der Fernbedienung</string>
-    <string name="bluetooth_failed_try_again">Bitte versuche es noch einmal.</string>
     <string name="theme_black_oled_info">Verbraucht weniger Energie auf OLED-Bildschirmen</string>
     <string name="third_party_library">Bibliotheken von Drittanbietern</string>
     <string name="keyboard_language_info">Stelle sicher, dass die ausgewählte Tastatursprache mit der auf dem entfernten Gerät konfigurierten Sprache übereinstimmt.</string>
@@ -110,8 +104,6 @@
     <string name="help_pairing_device_failed_connection_message_1">Wenn du die Geräte erfolgreich verbunden hast, aber dich nicht zur Gegenstelle verbinden kannst, stelle sicher, der unten stehenden Anleitung zu folgen:</string>
     <string name="help_device_failed_connection_message_2">Solltest du trotz dieser Tests weiterhin keine Verbindung herstellen können, mache dies:</string>
     <string name="help_keyboard_wrong_character_sent_message">Wenn die Gesendeten Zeichen falsch sind, musst du die physikalische Tastatur der Gegenstelle so konfigurieren, dass die Sprache mit der Sprache aus den Einstellungen der App übereinstimmt.</string>
-    <string name="help_pairing_connection_initialization_error_message_1">Wenn du die Geräte erfolgreich verbunden hast, aber die Fehler „%1$s“ oder „%2$s“ bekommst:</string>
-    <string name="bluetooth_failed_to_connect_to_device">Der Versuch, zur Gegenstelle zu verbinden, ist fehlgeschlagen.</string>
     <string name="bluetooth_failed_to_register_app_message">Fehlschlag beim registrieren der Anwendung. Bitte sicherstellen, dass kein andere Bluetooth-Dienst im Hintergrund läuft. Es ist möglich, dass der Bluetooth-Prozess unerwartet unterbrochen wurde, falls der Fehler bestehen bleibt. Um dieses Problem zu lösen, Bluetooth auf dem Gerät deaktivieren und wieder aktivieren.</string>
     <string name="help_device_failed_connection_message_3">Wenn die Problematik weiterhin besteht, stelle sicher, dass die Bluetooth-Module in beiden Geräten in Ordnung sind.</string>
     <string name="unpair">Entkoppeln</string>
@@ -121,12 +113,8 @@
     <string name="power">Power</string>
     <string name="advanced_keyboard">Erweiterte Tastatur</string>
     <string name="space_bar">Leertaste</string>
-    <string name="print_screen">Druck</string>
     <string name="shift">Shift</string>
-    <string name="meta">Meta</string>
     <string name="ctrl">Strg</string>
-    <string name="alt">Alt</string>
-    <string name="alt_gr">Alt Gr</string>
     <string name="menu">Menü</string>
     <string name="closed_captions">Untertitel</string>
     <string name="use_the_gyroscope_to_control_the_mouse">Gyroskop nutzen um die Maus zu konrollieren</string>
@@ -157,7 +145,6 @@
     <string name="bluetooth_address">Bluetooth-Adresse</string>
     <string name="bluetooth_address_wrong_format">Die eingegebene Adresse hat das falsche Format. Sie muss 6 Paare von hexadezimalen Zeichen haben.\nBeispiel: 00:1A:2B:3C:4D:5E.</string>
     <string name="full_screen">Vollbild</string>
-    <string name="user_interface">Schnittstelle</string>
     <string name="use_minimalist_interface">Benutze die minimalistische Schnittstelle</string>
     <string name="navigation_mode">Navigationsmodus</string>
     <string name="d_pad">D-Pad</string>
@@ -221,4 +208,9 @@
     <string name="no_device_registered">Auf diesem Gerät ist kein Gerät registriert.</string>
     <string name="more_buttons">Weitere Schaltflächen</string>
     <string name="use_mouse_navigation_by_default">Standardmäßig Mausnavigation verwenden</string>
+    <string name="mouse_scroll_speed">Scrollgeschwindigkeit</string>
+    <string name="assign_action_volume_up_button">Der Lauter-Taste eine Aktion zuweisen</string>
+    <string name="assign_action_volume_down_button">Der Leiser-Taste eine Aktion zuweisen</string>
+    <string name="show_remote_buttons_in_notification">Fernbedienungstasten in der Benachrichtigung anzeigen</string>
+    <string name="keyboard_arabic">Arabisch</string>
 </resources>

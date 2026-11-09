@@ -110,6 +110,5 @@ class RemoteViewModel(private val useCase: RemoteUseCase) : ViewModel() {
 
     override fun onCleared() {
         setInputsActive(false)
-        super.onCleared()
     }
 }

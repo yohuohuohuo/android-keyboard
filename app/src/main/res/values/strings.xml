@@ -22,7 +22,6 @@
     <string name="bluetooth_permission_not_granted">Permission not granted</string>
     <string name="bluetooth_permission_message">You must authorize access to Bluetooth.</string>
     <string name="bluetooth_permission_button">Authorize</string>
-    <string name="bluetooth_permission_denied_message">You\'ve denied Bluetooth access.</string>
 
     <!-- Bluetooth Activation -->
     <string name="activation">Activation</string>
@@ -33,7 +32,6 @@
     <!-- Bluetooth Bonded Devices -->
     <string name="devices">Devices</string>
     <string name="paired_devices">Paired devices</string>
-    <string name="unpair_device">Unpair device</string>
     <string name="unpair">Unpair</string>
     <string name="unpair_device_warning_message">This device will be completely unpaired from your device. Do you really want to continue?</string>
     <string name="unpair_device_successful">The device has been successfully dissociated.</string>
@@ -87,14 +85,11 @@
     <string name="bluetooth_device_connecting_message">Connecting to \"%1$s\" device…</string>
     <string name="bluetooth_device_disconnecting_message">Disconnecting \"%1$s\"…</string>
     <string name="bluetooth_failed_to_register_app_message">Failure to register the application. Please ensure that no other Bluetooth service is running in the background. If the error persists, it\'s possible that the Bluetooth process was unexpectedly interrupted. To fix this issue, please disable the Bluetooth on your device, then re-enable it.</string>
-    <string name="bluetooth_failed_to_connect_to_device">The attempt to connect to the remote device failed.</string>
-    <string name="bluetooth_failed_try_again">Please try again.</string>
 
     <!-- Remote Screen -->
     <string name="remote">Remote</string>
     <string name="more">More</string>
     <string name="disconnect">Disconnect</string>
-    <string name="direction_arrows">Direction arrows</string>
     <string name="more_buttons">More Buttons</string>
 
     <!-- Widgets -->
@@ -119,7 +114,6 @@
     <string name="keyboard_and_input_field">Keyboard and input field</string>
     <string name="clear_input_field">Clear input field after sending text</string>
     <string name="integrate_advanced_keyboard_into_the_view">Integrate the advanced keyboard into the view</string>
-    <string name="user_interface">Interface</string>
     <string name="use_minimalist_interface">Use the minimalist interface</string>
     <string name="use_mouse_navigation_by_default">Use mouse navigation by default</string>
     <string name="minimalist_interface_info">Does not display the TV channel buttons</string>
@@ -165,19 +159,14 @@
     <string name="keyboard_ukrainian">Ukrainian</string>
     <string name="keyboard_persian">Persian</string>
     <string name="keyboard_arabic">Arabic</string>
-    <string name="direct_input">Direct Input</string>
     <string name="send">Send</string>
     <string name="enter">Enter</string>
     <string name="escape">Esc</string>
     <string name="delete">Delete</string>
     <string name="keyboard_tab">Tab</string>
     <string name="space_bar">Space Bar</string>
-    <string name="print_screen">Print Screen</string>
     <string name="shift">Shift</string>
-    <string name="meta">Meta</string>
     <string name="ctrl">Ctrl</string>
-    <string name="alt">Alt</string>
-    <string name="alt_gr">Alt Gr</string>
     <string name="page_up">Page Up</string>
     <string name="page_down">Page Down</string>
 
@@ -205,7 +194,6 @@
     <string name="mute">Mute</string>
     <string name="home">Home</string>
     <string name="back">Back</string>
-    <string name="standby">Standby</string>
     <string name="next_channel">Next channel</string>
     <string name="previous_channel">Previous channel</string>
     <string name="power">Power</string>
@@ -225,7 +213,6 @@
     <string name="mouse_click_middle">Click middle</string>
     <string name="mouse_wheel_up">Swipe up</string>
     <string name="mouse_wheel_down">Swipe down</string>
-    <string name="mouse_pad_tap">Tap</string>
 
     <!-- Notification -->
     <string name="notification_channel_name">Bluetooth HID connection</string>
@@ -259,7 +246,6 @@
     <string name="help_pairing_missing_device_check_2">• Ensure that Bluetooth visibility is enabled on the remote device.</string>
     <string name="help_pairing_missing_device_check_3" translatable="false">@string/help_device_failed_connection_check_3</string>
     <string name="help_pairing_missing_device_check_location_for_android_11_or_less">• Ensure that location services are enabled on your device.</string>
-    <string name="help_pairing_connection_initialization_error_message_1">If you have successfully paired both devices but encounter errors \"%1$s\" or \"%2$s\":</string>
     <string name="help_pairing_device_failed_connection_message_1">If you have successfully paired both devices but are unable to connect to the remote device, please make sure to follow the instructions below:</string>
 
     <string name="help_remote_control_buttons_are_not_working_title">Remote control buttons</string>
@@ -278,7 +264,6 @@
 
     <!-- No translatable -->
 
-    <string name="empty" translatable="false" />
 
     <!-- Third Library -->
 

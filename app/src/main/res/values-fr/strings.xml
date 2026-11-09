@@ -20,7 +20,6 @@
     <string name="bluetooth_permission_not_granted">Permission non accordée</string>
     <string name="bluetooth_permission_message">Vous devez autoriser l\'accès au Bluetooth.</string>
     <string name="bluetooth_permission_button">Autoriser</string>
-    <string name="bluetooth_permission_denied_message">Vous avez refusé l\'accès au Bluetooth.</string>
     <!-- Bluetooth Activation -->
     <string name="activation">Activation</string>
     <string name="bluetooth_disabled_info">Bluetooth désactivé</string>
@@ -29,7 +28,6 @@
     <!-- Bluetooth Bonded Devices -->
     <string name="devices">Appareils</string>
     <string name="paired_devices">Appareils enregistrés</string>
-    <string name="unpair_device">Dissocier l\'appareil</string>
     <string name="unpair">Dissocier</string>
     <string name="unpair_device_warning_message">Ce périphérique sera complètement dissocié de votre appareil. Voulez-vous vraiment continuer ?</string>
     <string name="unpair_device_successful">L\'appareil a été correctement dissocié.</string>
@@ -79,13 +77,10 @@
     <string name="bluetooth_device_connecting_message">Connexion au périphérique \"%1$s\"…</string>
     <string name="bluetooth_device_disconnecting_message">Déconnexion de \"%1$s\"…</string>
     <string name="bluetooth_failed_to_register_app_message">Échec lors de l\'enregistrement de l\'application. Veuillez vérifier qu\'aucun autre service Bluetooth ne fonctionne en arrière-plan. Si l\'erreur persiste, il est possible que le processus Bluetooth ait été interrompu de manière inattendue. Pour corriger ce problème, veuillez désactiver le Bluetooth de votre appareil, puis réactivez-le.</string>
-    <string name="bluetooth_failed_to_connect_to_device">La tentative de connexion à l\'appareil distant a échoué.</string>
-    <string name="bluetooth_failed_try_again">Veuillez réessayer.</string>
     <!-- Remote Screen -->
     <string name="remote">Télécommande</string>
     <string name="more">Plus</string>
     <string name="disconnect">Se déconnecter</string>
-    <string name="direction_arrows">Flèches de direction</string>
     <string name="more_buttons">Boutons supplémentaires</string>
     <!-- Widgets -->
     <string name="connect">Se connecter</string>
@@ -108,7 +103,6 @@
     <string name="keyboard_and_input_field">Clavier et champ de saisie</string>
     <string name="clear_input_field">Effacer le champ de saisie après l\'envoi du texte</string>
     <string name="integrate_advanced_keyboard_into_the_view">Intégrer le clavier avancé à la vue</string>
-    <string name="user_interface">Interface</string>
     <string name="use_minimalist_interface">Utiliser l\'interface minimaliste</string>
     <string name="minimalist_interface_info">N\'affiche pas les boutons des chaînes de télévision</string>
     <string name="navigation_mode">Mode de navigation</string>
@@ -158,12 +152,8 @@
     <string name="delete">Supprimer</string>
     <string name="keyboard_tab">Tab</string>
     <string name="space_bar">Barre espace</string>
-    <string name="print_screen">Impression d\'écran</string>
     <string name="shift">Shift</string>
-    <string name="meta">Meta</string>
     <string name="ctrl">Ctrl</string>
-    <string name="alt">Alt</string>
-    <string name="alt_gr">Alt Gr</string>
     <string name="page_up">Page Up</string>
     <string name="page_down">Page Down</string>
     <!-- Remote button description -->
@@ -190,7 +180,6 @@
     <string name="mute">Sourdine</string>
     <string name="home">Accueil</string>
     <string name="back">Retour</string>
-    <string name="standby">Veille</string>
     <string name="next_channel">Chaîne suivante</string>
     <string name="previous_channel">Chaîne précédente</string>
     <string name="power">Power</string>
@@ -209,7 +198,6 @@
     <string name="mouse_click_middle">Clique milieu</string>
     <string name="mouse_wheel_up">Glisser vers le haut</string>
     <string name="mouse_wheel_down">Glisser vers le bas</string>
-    <string name="mouse_pad_tap">Tap</string>
     <!-- Notification -->
     <string name="notification_channel_name">Connexion Bluetooth HID</string>
     <string name="connected_on">Connecté sur %1$s</string>
@@ -236,7 +224,6 @@
     <string name="help_pairing_missing_device_message_1">Si l\'appareil que vous souhaitez appairer ne s\'affiche pas dans la liste des appareils disponibles, suivez les instructions suivantes :</string>
     <string name="help_pairing_missing_device_check_2">• Assurez-vous que la visibilité Bluetooth est activée sur l\'appareil distant.</string>
     <string name="help_pairing_missing_device_check_location_for_android_11_or_less">• Assurez-vous que la localisation est activée sur votre appareil.</string>
-    <string name="help_pairing_connection_initialization_error_message_1">Si vous avez réussi à associer les deux appareils mais que vous rencontrez les erreurs \"%1$s\" ou \"%2$s\" :</string>
     <string name="help_pairing_device_failed_connection_message_1">Si vous avez réussi à associer les deux appareils mais que vous ne parvenez pas à vous connecter à l\'appareil distant, veuillez vous assurer de suivre les instructions ci-dessous :</string>
     <string name="help_remote_control_buttons_are_not_working_title">Boutons de la télécommande</string>
     <string name="help_remote_control_buttons_are_not_working_message">Si le clavier, la souris ou certains boutons ne fonctionnent pas, suivez les instructions suivantes :</string>

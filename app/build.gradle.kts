@@ -12,15 +12,17 @@ val localProps = Properties().apply {
 android {
     namespace = "com.atharok.btremote"
     compileSdk {
-        version = release(36)
+        version = release(37) {
+            minorApiLevel = 2
+        }
     }
 
     defaultConfig {
         applicationId = "io.github.yohuohuohuo.btremote"
         minSdk = 28
-        targetSdk = 36
-        versionCode = 17
-        versionName = "0.1.9"
+        targetSdk = 37
+        versionCode = 18
+        versionName = "0.1.10"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -74,8 +76,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     buildFeatures {
@@ -85,6 +87,8 @@ android {
     testOptions {
         unitTests.isIncludeAndroidResources = true
         unitTests.all { test ->
+            // Robolectric 4.17 accesses SharedSecrets for Android file descriptors on JDK 21.
+            test.jvmArgs("--add-opens=java.base/jdk.internal.access=ALL-UNNAMED")
             val testHome = layout.buildDirectory.dir("test-home").get().asFile
             test.systemProperty("user.home", testHome.absolutePath)
             test.systemProperty("robolectric.dependency.repo.url", "https://repo.maven.apache.org/maven2")
@@ -123,12 +127,15 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.koin.androidx.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.glance.appwidget)
     implementation(libs.glance.material3)
     implementation(libs.androidx.work.runtime.ktx)
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.ui.test.junit4)
+    // Compose's old transitive Espresso probes InputManager APIs removed on SDK 37.
+    testImplementation(libs.androidx.espresso.core)
     testImplementation(libs.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -1,6 +1,5 @@
 package com.atharok.btremote.ui.screens
 
-import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +12,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.dimensionResource
@@ -107,12 +105,12 @@ private fun ThirdLibraryItem(
 private fun ButtonOpenInBrowser(
     @StringRes textId: Int,
     @StringRes urlId: Int,
-    context: Context = LocalContext.current,
     uriHandler: UriHandler = LocalUriHandler.current,
 ) {
+    val url = stringResource(urlId)
     MaterialFilledTonalButton(
         onClick = {
-            uriHandler.openUri(context.getString(urlId))
+            uriHandler.openUri(url)
         },
         text = stringResource(id = textId),
         icon = AppIcons.OpenInBrowser

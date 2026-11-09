@@ -18,7 +18,6 @@
     <string name="bluetooth_permission_not_granted">Разрешение отменено</string>
     <string name="bluetooth_permission_message">Вы должны разрешить доступ к Bluetooth.</string>
     <string name="bluetooth_permission_button">Авторизовать</string>
-    <string name="bluetooth_permission_denied_message">Вы запретили доступ к Bluetooth.</string>
     <!-- Bluetooth Activation -->
     <string name="activation">Активация</string>
     <string name="bluetooth_disabled_info">Bluetooth отключён</string>
@@ -37,13 +36,10 @@
     <string name="bluetooth_device_connecting_message">Попытка подключения к устройству \"%1$s\"…</string>
     <string name="bluetooth_device_disconnecting_message">Отключение «%1$s»…</string>
     <string name="bluetooth_failed_to_register_app_message">Невозможность зарегистрировать приложение. Убедитесь, что никакая другая служба Bluetooth не работает в фоновом режиме. Если ошибка не устранена, возможно, процесс Bluetooth был неожиданно прерван. Чтобы решить эту проблему, отключите Bluetooth на своем устройстве, а затем снова включите его.</string>
-    <string name="bluetooth_failed_to_connect_to_device">Попытка подключения к удаленному устройству не удалась.</string>
-    <string name="bluetooth_failed_try_again">Попробуйте ещё раз.</string>
     <!-- Remote Screen -->
     <string name="remote">Удалённый</string>
     <string name="more">Подробнее</string>
     <string name="disconnect">Разъединить</string>
-    <string name="direction_arrows">Стрелки направления</string>
     <!-- Settings -->
     <string name="settings">Настройки</string>
     <string name="appearance">Внешний вид</string>
@@ -91,7 +87,6 @@
     <string name="mute">Заглушить</string>
     <string name="home">Домой</string>
     <string name="back">Назад</string>
-    <string name="standby">В режим ожидания</string>
     <string name="next_channel">Следующий канал</string>
     <string name="previous_channel">Предыдущий канал</string>
     <!-- Mouse -->
@@ -101,7 +96,6 @@
     <string name="mouse_click_middle">Средняя кнопка мыши</string>
     <string name="mouse_wheel_up">Проведите пальцем вверх</string>
     <string name="mouse_wheel_down">Проведите пальцем вниз</string>
-    <string name="mouse_pad_tap">Нажмите</string>
     <!-- Notification -->
     <string name="notification_channel_name">Соединение Bluetooth HID</string>
     <string name="connected_on">Подключено на %1$s</string>
@@ -124,7 +118,6 @@
     <string name="help_pairing_missing_device_message_1">Если устройство, с которым вы хотите выполнить сопряжение, не отображается, следуйте приведенным ниже инструкциям:</string>
     <string name="help_pairing_missing_device_check_2">• Убедитесь, что видимость Bluetooth включена на удалённом устройстве.</string>
     <string name="help_pairing_missing_device_check_location_for_android_11_or_less">• Убедитесь, что службы определения местоположения включены на вашем устройстве.</string>
-    <string name="help_pairing_connection_initialization_error_message_1">Если вы успешно связали оба устройства, но столкнулись с ошибками «%1$s» или «%2$s»:</string>
     <string name="help_pairing_device_failed_connection_message_1">Если вы успешно соединили оба устройства, но не можете подключиться к удалённому устройству, обязательно следуйте инструкциям ниже:</string>
     <string name="help_remote_control_buttons_are_not_working_title">Кнопки дистанционного управления</string>
     <string name="help_remote_control_buttons_are_not_working_message">Если клавиатура, мышь или некоторые кнопки не работают, следуйте инструкциям ниже:</string>
@@ -156,7 +149,6 @@
     <string name="bluetooth_address">Bluetooth-адрес</string>
     <string name="bluetooth_address_wrong_format">Введенный адрес имеет неправильный формат. Он должен содержать 6 пар шестнадцатеричных символов.\nПример: 00:1A:2B:3C:4D:5E.</string>
     <string name="full_screen">На весь экран</string>
-    <string name="user_interface">Интерфейс</string>
     <string name="navigation_mode">Режим навигации</string>
     <string name="d_pad_description">Навигация через элементы управления направлением</string>
     <string name="touchpad">Сенсорная панель</string>
@@ -174,19 +166,14 @@
     <string name="power">Включение</string>
     <string name="keyboard_bulgarian">Болгарский</string>
     <string name="retry">Повторить</string>
-    <string name="unpair_device">Отсоединить устройство</string>
     <string name="keyboard_polish">Польский</string>
     <string name="space_bar">Пробел</string>
     <string name="advanced_keyboard">Расширенная клавиатура</string>
     <string name="closed_captions">Субтитры</string>
     <string name="menu">Меню</string>
-    <string name="meta">Meta</string>
     <string name="ctrl">Ctrl</string>
-    <string name="alt">Alt</string>
-    <string name="alt_gr">Alt Gr</string>
     <string name="keyboard_turkish">Турецкий</string>
     <string name="use_the_gyroscope_to_control_the_mouse">Использовать гироскоп для управления мышью</string>
-    <string name="print_screen">Снимок экрана</string>
     <string name="shift">Shift</string>
     <string name="unpair_device_successful">Устройство успешно отсоединено.</string>
     <string name="enabled_automatic_connection_message">Хотите ли вы автоматически подключаться к этому устройству при запуске приложения?</string>

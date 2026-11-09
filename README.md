@@ -9,7 +9,7 @@ YoRemote 将 Android 手机作为蓝牙 HID 触控板、键盘和遥控器，直
 - 应用源码和资源：`app/src/main/`；测试：`app/src/test/`、`app/src/androidTest/`。
 - 版本号、包名、构建类型和签名配置：`app/build.gradle.kts`。
 - 依赖版本：`gradle/libs.versions.toml`；Wrapper：`gradle/wrapper/`。
-- 当前版本：0.1.9 / versionCode 17；显示名：YoRemote。
+- 当前版本：0.1.10 / versionCode 18；显示名：YoRemote。
 - namespace：`com.atharok.btremote`；基础 applicationId：`io.github.yohuohuohuo.btremote`。
 - 日常测试用 `defaultOptimized`：包名带 `.debug`，使用 Debug 证书，开启 R8 和资源裁剪，关闭调试与 Debug tooling。
 
@@ -17,7 +17,9 @@ YoRemote 将 Android 手机作为蓝牙 HID 触控板、键盘和遥控器，直
 
 ## 开发与构建
 
-需要 JDK 21、Android SDK 36 和 Build Tools 36。Android Studio 打开根目录并完成 SDK 配置后，在根目录执行：
+需要 JDK 21、Android SDK 37.2 和 Build Tools 36。当前使用 Gradle 9.9.0、AGP 9.5.1、Kotlin 2.4.21，目标 Android API 37、最低 API 28。Android Studio 打开根目录并完成 SDK 配置后，在根目录执行：
+
+使用 IDE 同步时，需要支持 AGP 9.5 的 Android Studio（2026.2.2 或更新版本）；旧版 IDE 不影响已配置 JDK/SDK 的命令行构建。
 
 ```sh
 ./gradlew --no-daemon testDefaultDebugUnitTest assembleDefaultOptimized
@@ -43,7 +45,7 @@ export ANDROID_USER_HOME="$PWD/artifacts/.android-home"
 ./gradlew --no-daemon --continue lintDefaultDebug lintDefaultOptimized
 ```
 
-迁移前 lint 为 233 错误 / 42 警告，尚未解决；应记录实际结果，不得关闭规则伪造通过。模拟测试不能代替蓝牙、输入法、入口复用和异常断连的真机验证。
+lint 的当前验收标准为 Debug 和 Optimized 两种变体均 0 错误 / 0 警告，不关闭规则或添加 baseline。模拟测试不能代替蓝牙、输入法、入口复用和异常断连的真机验证。
 
 ## 提交与推送
 
@@ -56,6 +58,8 @@ export ANDROID_USER_HOME="$PWD/artifacts/.android-home"
 GitHub 发布工作流也从根目录直接构建。正式 Release 仍需独立配置发行签名，不要把 Debug 证书当作正式发行密钥。
 
 ## 记录与来源
+
+[0.1.10 lint 清理与验证](docs/YoRemoteLint清理与验证-2026-11-09.md) 记录两种变体的零 lint 结果、54 项测试、SDK/依赖更新和本地新包，当前开发配置以本轮为准。
 
 [目录迁移记录](docs/YoRemote普通工程迁移-2026-11-09.md) 是当前工程结构的说明。[0.1.9 体积优化与安全审查](docs/YoRemote体积优化与安全审查-2026-11-09.md) 保留当时的 APK、测试和安全证据；其中 src、补丁、重放命令均是迁移前历史，不再是当前开发流程。
 
