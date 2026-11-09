@@ -45,14 +45,12 @@ jobs:
 
       - name: Patch
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          chmod +x ./build.sh ./src/gradlew
+          chmod +x ./build.sh
           ./build.sh
 
       - name: Build
         run: |
-          cd src
+          cd artifacts/yoremote-source
           echo ${{ secrets.STORE }} | base64 -d > upload.jks
           echo ${{ secrets.LOCAL }} | base64 -d > local.properties
           ./gradlew assembleDefaultRelease bundleDefaultRelease --stacktrace
@@ -65,5 +63,5 @@ jobs:
           name: v${{ env.version }}
           tag_name: v${{ env.version }}
           files: |
-            src/${{ env.main_project_module }}/build/outputs/apk/default/release/app-default-release.apk
-            src/${{ env.main_project_module }}/build/outputs/bundle/defaultRelease/app-default-release.aab
+            artifacts/yoremote-source/${{ env.main_project_module }}/build/outputs/apk/default/release/app-default-release.apk
+            artifacts/yoremote-source/${{ env.main_project_module }}/build/outputs/bundle/defaultRelease/app-default-release.aab

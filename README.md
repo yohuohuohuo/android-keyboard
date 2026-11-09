@@ -40,11 +40,17 @@ Unlike network remote-control tools, this does not require a companion applicati
 ```shell
 git submodule update --init --recursive
 ./build.sh
-cd src
-./gradlew assembleDefaultDebug
+cd artifacts/yoremote-source
+./gradlew testDefaultDebugUnitTest assembleDefaultDebug assembleDefaultOptimized assembleDefaultDebugAndroidTest lintDefaultDebug lintDefaultOptimized
 ```
 
+当前本地定制版为 **YoRemote**，基础包名 `io.github.yohuohuohuo.btremote`，Debug 后缀 `.debug`。需要 JDK 21 / SDK 36。`build.sh` 在独立目录准备源码，不修改 `src` 子模块；已有目标目录会拒绝覆盖，可用 `./build.sh <新的目录>` 重放。Debug 更新需沿用自己的 `ANDROID_USER_HOME` 下的签名，不要把密钥提交到 Git。
+
+四页、安装包和真机验收说明见 [YoRemote 实施与验收](docs/YoRemote实施与验收-2026-11-08.md)。原版和旧 APK 保留供轮流启用对照。外部入口修复见 [0.1.1 草稿恢复](docs/YoRemote外部入口草稿修复-2026-11-09.md)；布局调整见 [0.1.2 定高居中](docs/YoRemote竖屏键盘居中-2026-11-09.md)、[0.1.3 方向键十字布局](docs/YoRemote竖屏方向键十字布局-2026-11-09.md)、[0.1.4 快捷输入布局](docs/YoRemote快捷输入纵向布局-2026-11-09.md)；[0.1.5 固定模式说明](docs/YoRemote快捷输入固定说明-2026-11-09.md) 修复辅助输入闪烁，[0.1.6 简化提示](docs/YoRemote移除成功提示与停止按钮-2026-11-09.md) 移除成功提示和停止按钮，[0.1.7 仅异常提示](docs/YoRemote快捷输入仅异常提示-2026-11-09.md) 进一步移除发送中提示，[0.1.8 弱化说明](docs/YoRemote弱化快捷输入说明-2026-11-09.md) 缩小并淡化辅助文案。
+
 Check out the [CI](.github/workflows/apk.yml) for more details on reproducible builds.
+
+**0.1.9 优化测试包**：`assembleDefaultOptimized` 继承 Release 的 R8 与资源裁剪，沿用 `.debug` 安装包名和本地 Debug 签名，但关闭调试且不引入 Debug tooling。实测从 71.01 MiB 降到 4.75 MiB（减少 93.31%）；不删功能、语言或 ABI。最新交付、覆盖安装和安全边界见 [体积优化与安全审查](docs/YoRemote体积优化与安全审查-2026-11-09.md)。lint 仍有历史失败，不能称为全部检查通过。
 
 ## Credits
 

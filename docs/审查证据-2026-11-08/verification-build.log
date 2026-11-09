@@ -1,0 +1,205 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+Unable to initialize metrics, ensure /Users/qiuyupan/.android is writable, details: /Users/qiuyupan/.android/analytics.settings (Operation not permitted)
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDefaultDebugBuild UP-TO-DATE
+> Task :app:mergeDefaultDebugNativeDebugMetadata NO-SOURCE
+
+> Task :app:generateDefaultDebugResources UP-TO-DATE
+Caught exception: Could not start the FSEvents stream: /private/tmp/android-bt-remote-review-01a1ba37/src
+
+> Task :app:packageDefaultDebugResources UP-TO-DATE
+> Task :app:processDefaultDebugNavigationResources UP-TO-DATE
+> Task :app:parseDefaultDebugLocalResources UP-TO-DATE
+> Task :app:generateDefaultDebugRFile UP-TO-DATE
+> Task :app:compileDefaultDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDefaultDebug UP-TO-DATE
+> Task :app:compileDefaultDebugJavaWithJavac NO-SOURCE
+> Task :app:generateDefaultDebugAssets UP-TO-DATE
+> Task :app:mergeDefaultDebugAssets UP-TO-DATE
+> Task :app:compressDefaultDebugAssets UP-TO-DATE
+> Task :app:generateDefaultDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDefaultDebugJavaRes UP-TO-DATE
+> Task :app:mergeDefaultDebugJavaResource UP-TO-DATE
+> Task :app:checkDefaultDebugDuplicateClasses UP-TO-DATE
+> Task :app:desugarDefaultDebugFileDependencies UP-TO-DATE
+> Task :app:mergeExtDexDefaultDebug UP-TO-DATE
+> Task :app:mergeLibDexDefaultDebug UP-TO-DATE
+> Task :app:checkDefaultDebugAarMetadata UP-TO-DATE
+> Task :app:mapDefaultDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDefaultDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDefaultDebugResources UP-TO-DATE
+> Task :app:createDefaultDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDefaultDebug UP-TO-DATE
+> Task :app:processDefaultDebugMainManifest UP-TO-DATE
+> Task :app:processDefaultDebugManifest UP-TO-DATE
+> Task :app:processDefaultDebugManifestForPackage UP-TO-DATE
+> Task :app:mergeDefaultDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDefaultDebugNativeLibs UP-TO-DATE
+> Task :app:stripDefaultDebugDebugSymbols
+> Task :app:validateSigningDefaultDebug
+> Task :app:writeDefaultDebugAppMetadata
+> Task :app:writeDefaultDebugSigningConfigVersions
+> Task :app:preDefaultDebugUnitTestBuild UP-TO-DATE
+> Task :app:preDefaultDebugAndroidTestBuild SKIPPED
+> Task :app:javaPreCompileDefaultDebugUnitTest
+> Task :app:extractProguardFiles
+> Task :app:processDefaultDebugResources
+> Task :app:generateDefaultDebugLintReportModel
+> Task :app:dexBuilderDefaultDebug
+> Task :app:bundleDefaultDebugClassesToRuntimeJar
+> Task :app:bundleDefaultDebugClassesToCompileJar
+> Task :app:mergeProjectDexDefaultDebug
+
+> Task :app:compileDefaultDebugUnitTestKotlin
+e: java.nio.file.FileSystemException: /Users/qiuyupan/Library/Application Support/kotlin/daemon/kotlin-daemon-client-tsmarker6012623749524741084.tmp: Operation not permitted
+java.lang.RuntimeException: java.nio.file.FileSystemException: /Users/qiuyupan/Library/Application Support/kotlin/daemon/kotlin-daemon-client-tsmarker6012623749524741084.tmp: Operation not permitted
+	at org.jetbrains.kotlin.buildtools.internal.KotlinLoggerMessageCollectorAdapter.report(KotlinLoggerMessageCollectorAdapter.kt:33)
+	at org.jetbrains.kotlin.cli.common.messages.MessageCollector.report$default(MessageCollector.kt:12)
+	at org.jetbrains.kotlin.compilerRunner.KotlinCompilerRunnerUtils.newDaemonConnection(KotlinCompilerRunnerUtils.kt:93)
+	at org.jetbrains.kotlin.buildtools.internal.BaseCompilationOperationImpl.compileWithDaemon(BaseCompilationOperationImpl.kt:185)
+	at org.jetbrains.kotlin.buildtools.internal.BaseCompilationOperationImpl.executeCancellableImpl(BaseCompilationOperationImpl.kt:91)
+	at org.jetbrains.kotlin.buildtools.internal.BaseCompilationOperationImpl.executeCancellableImpl(BaseCompilationOperationImpl.kt:55)
+	at org.jetbrains.kotlin.buildtools.internal.CancellableBuildOperationImpl.executeImpl(CancellableBuildOperationImpl.kt:58)
+	at org.jetbrains.kotlin.buildtools.internal.BuildOperationImpl.execute(BuildOperationImpl.kt:33)
+	at org.jetbrains.kotlin.buildtools.internal.KotlinToolchainsImpl$BuildSessionImpl.executeOperation$lambda$1(KotlinToolchainsImpl.kt:74)
+	at org.jetbrains.kotlin.buildtools.internal.KotlinToolchainsImpl$BuildSessionImpl.executeOperation(KotlinToolchainsImpl.kt:78)
+	at org.jetbrains.kotlin.compilerRunner.btapi.BuildToolsApiCompilationWork.performCompilation(BuildToolsApiCompilationWork.kt:184)
+	at org.jetbrains.kotlin.compilerRunner.btapi.BuildToolsApiCompilationWork.compileInDaemon(BuildToolsApiCompilationWork.kt:261)
+	at org.jetbrains.kotlin.compilerRunner.btapi.BuildToolsApiCompilationWork.execute(BuildToolsApiCompilationWork.kt:309)
+	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:68)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:64)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:61)
+	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:102)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:61)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:58)
+	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:191)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$500(DefaultConditionalExecutionQueue.java:112)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:168)
+	at org.gradle.internal.Factories$1.create(Factories.java:30)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.lambda$withLocksAcquired$0(DefaultWorkerLeaseService.java:280)
+	at org.gradle.internal.work.ResourceLockStatistics$1.measure(ResourceLockStatistics.java:43)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocksAcquired(DefaultWorkerLeaseService.java:278)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:270)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:129)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:134)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:163)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:125)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+w: Failed to compile with Kotlin daemon
+Using fallback strategy: Compile without Kotlin daemon
+Try ./gradlew --stop if this issue persists
+If it does not look related to your configuration, please file an issue with logs to https://kotl.in/issue
+
+> Task :app:generateDefaultDebugAndroidTestLintModel
+> Task :app:compileDefaultDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDefaultDebugUnitTestJavaRes
+> Task :app:testDefaultDebugUnitTest
+> Task :app:generateDefaultDebugUnitTestLintModel
+> Task :app:packageDefaultDebug
+> Task :app:createDefaultDebugApkListingFileRedirect
+> Task :app:assembleDefaultDebug
+> Task :app:lintAnalyzeDefaultDebugUnitTest
+
+> Task :app:lintAnalyzeDefaultDebugAndroidTest
+Warning: Unable to initialize metrics, ensure /Users/qiuyupan/.android is writable, details: /Users/qiuyupan/.android/analytics.settings (Operation not permitted)
+
+> Task :app:lintAnalyzeDefaultDebug
+
+> Task :app:lintReportDefaultDebug
+Wrote HTML report to file:///private/tmp/android-bt-remote-review-01a1ba37/src/app/build/reports/lint-results-defaultDebug.html
+Lint found 234 errors and 37 warnings. First failure:
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/data/bluetooth/BluetoothHidCore.kt:159: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+        return hidDevice.sendReport(device, id, bytes)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+> Task :app:lintDefaultDebug FAILED
+Lint found 234 errors, 37 warnings. First failure:
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/data/bluetooth/BluetoothHidCore.kt:159: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+        return hidDevice.sendReport(device, id, bytes)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "MissingPermission":
+   This check scans through your code and libraries and looks at the APIs
+   being used, and checks this against the set of permissions required to
+   access those APIs. If the code using those APIs is called at runtime, then
+   the program will crash.
+
+   Furthermore, for permissions that are revocable (with targetSdkVersion 23),
+   client code must also be prepared to handle the calls throwing an exception
+   if the user rejects the request for permission at runtime.
+
+
+The full lint text report is located at:
+  /private/tmp/android-bt-remote-review-01a1ba37/src/app/build/intermediates/lint_intermediate_text_report/defaultDebug/lintReportDefaultDebug/lint-results-defaultDebug.txt
+
+[Incubating] Problems report is available at: file:///private/tmp/android-bt-remote-review-01a1ba37/src/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:lintDefaultDebug' (registered by plugin 'com.android.internal.application').
+> Lint found errors in the project; aborting build.
+  
+  Fix the issues identified by lint, or create a baseline to see only new errors.
+  To create a baseline, run `gradlew updateLintBaseline` after adding the following to the module's build.gradle file:
+  ```
+  android {
+      lint {
+          baseline = file("lint-baseline.xml")
+      }
+  }
+  ```
+  For more details, see https://developer.android.com/studio/write/lint#snapshot
+  
+  Lint found 234 errors, 37 warnings. First failure:
+  
+  /private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/data/bluetooth/BluetoothHidCore.kt:159: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+          return hidDevice.sendReport(device, id, bytes)
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+     Explanation for issues of type "MissingPermission":
+     This check scans through your code and libraries and looks at the APIs
+     being used, and checks this against the set of permissions required to
+     access those APIs. If the code using those APIs is called at runtime, then
+     the program will crash.
+  
+     Furthermore, for permissions that are revocable (with targetSdkVersion 23),
+     client code must also be prepared to handle the calls throwing an exception
+     if the user rejects the request for permission at runtime.
+  
+  
+  The full lint text report is located at:
+    /private/tmp/android-bt-remote-review-01a1ba37/src/app/build/intermediates/lint_intermediate_text_report/defaultDebug/lintReportDefaultDebug/lint-results-defaultDebug.txt
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1m 12s
+51 actionable tasks: 24 executed, 27 up-to-date

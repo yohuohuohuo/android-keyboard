@@ -1,0 +1,982 @@
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/data/bluetooth/BluetoothHidCore.kt:159: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+        return hidDevice.sendReport(device, id, bytes)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "MissingPermission":
+   This check scans through your code and libraries and looks at the APIs
+   being used, and checks this against the set of permissions required to
+   access those APIs. If the code using those APIs is called at runtime, then
+   the program will crash.
+
+   Furthermore, for permissions that are revocable (with targetSdkVersion 23),
+   client code must also be prepared to handle the calls throwing an exception
+   if the user rejects the request for permission at runtime.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/build.gradle.kts:21: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk = 36
+        ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application or sdk runs on a version of Android that is more
+   recent than your targetSdk specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdk is
+   less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdk to the highest available value. Then
+   test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/drawable/ic_splash_screen.xml:2: Warning: Limit vector icons sizes to 200×200 to keep icon drawing fast; see https://developer.android.com/studio/write/vector-asset-studio#when for more [VectorRaster]
+    android:width="288dp"
+                   ~~~~~
+
+   Explanation for issues of type "VectorRaster":
+   Vector icons require API 21 or API 24 depending on used features, but when
+   minSdkVersion is less than 21 or 24 and Android Gradle plugin 1.4 or higher
+   is used, a vector drawable placed in the drawable folder is automatically
+   moved to drawable-anydpi-v21 or drawable-anydpi-v24 and bitmap images are
+   generated for different screen resolutions for backwards compatibility.
+
+   However, there are some limitations to this raster image generation, and
+   this lint check flags elements and attributes that are not fully supported.
+   You should manually check whether the generated output is acceptable for
+   those older devices.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/wrapper/gradle-wrapper.properties:3: Warning: A newer version of Gradle than 9.5.0 is available: 9.9.0 [AndroidGradlePluginVersion]
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.5.0-bin.zip
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:2: Warning: A newer version of com.android.application than 9.2.1 is available: 9.5.1 [AndroidGradlePluginVersion]
+agp = "9.2.1"
+      ~~~~~~~
+
+   Explanation for issues of type "AndroidGradlePluginVersion":
+   This detector looks for usage of the Android Gradle Plugin where the
+   version you are using is not the current stable release. Using older
+   versions is fine, and there are cases where you deliberately want to stick
+   with an older version. However, you may simply not be aware that a more
+   recent version is available, and that is what this lint check helps find.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/build.gradle.kts:15: Warning: A newer version of compileSdk than 36 is available: 37 [GradleDependency]
+        version = release(36)
+                  ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:4: Warning: A newer version of androidx.core:core-ktx than 1.18.0 is available: 1.19.1 [GradleDependency]
+coreKtx = "1.18.0"
+          ~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:8: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.10.0 is available: 2.11.0 [GradleDependency]
+lifecycleRuntimeKtx = "2.10.0"
+                      ~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:10: Warning: A newer version of androidx.compose:compose-bom than 2026.05.01 is available: 2026.09.00 [GradleDependency]
+composeBom = "2026.05.01"
+             ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:11: Warning: A newer version of androidx.navigation:navigation-compose than 2.9.8 is available: 2.10.2 [GradleDependency]
+navigationCompose = "2.9.8"
+                    ~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:12: Warning: A newer version of androidx.datastore:datastore-preferences than 1.2.1 is available: 1.3.0 [GradleDependency]
+datastore = "1.2.1"
+            ~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:15: Warning: A newer version of androidx.glance:glance-appwidget than 1.1.1 is available: 1.2.0 [GradleDependency]
+glance = "1.1.1"
+         ~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:15: Warning: A newer version of androidx.glance:glance-material3 than 1.1.1 is available: 1.2.0 [GradleDependency]
+glance = "1.1.1"
+         ~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:16: Warning: A newer version of androidx.work:work-runtime-ktx than 2.11.2 is available: 2.12.0 [GradleDependency]
+workRuntimeKtx = "2.11.2"
+                 ~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:3: Warning: A newer version of org.jetbrains.kotlin.plugin.compose than 2.4.0 is available: 2.4.21 [NewerVersionAvailable]
+kotlin = "2.4.0"
+         ~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:13: Warning: A newer version of io.insert-koin:koin-androidx-compose than 4.2.1 is available: 4.2.2 [NewerVersionAvailable]
+koin = "4.2.1"
+       ~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/gradle/libs.versions.toml:14: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-serialization-json than 1.11.0 is available: 1.12.0 [NewerVersionAvailable]
+kotlinxSerializationJson = "1.11.0"
+                           ~~~~~~~~
+
+   Explanation for issues of type "NewerVersionAvailable":
+   This detector checks with a central repository to see if there are newer
+   versions available for the dependencies used by this project. This is
+   similar to the GradleDependency check, which checks for newer versions
+   available in the Android SDK tools and libraries, but this works with any
+   MavenCentral dependency, and connects to the library every time, which
+   makes it more flexible but also much slower.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/views/keyboard/AdvancedKeyboard.kt:98: Warning: Using Configuration.screenHeightDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+                    maxHeight = configuration.screenHeightDp.dp * if (isLandscape) 1f else 0.5f
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ConfigurationScreenWidthHeight":
+   Configuration.screenWidthDp and Configuration.screenHeightDp have different
+   insets behaviour depending on target SDK version, and are rounded to the
+   nearest Dp. This means that using these values in composition to size a
+   layout can result in issues, as these values do not accurately represent
+   the actual available window size. Instead it is recommended to use
+   WindowInfo.containerSize which accurately represents the window size.
+
+   Vendor: Jetpack Compose
+   Identifier: androidx.compose.ui
+   Feedback: https://issuetracker.google.com/issues/new?component=612128
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/screens/SettingsScreen.kt:121: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                convertValueToString = { context.getString(it.stringRes) },
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/screens/SettingsScreen.kt:247: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                convertValueToString = { context.getString(it.stringRes) },
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/screens/SettingsScreen.kt:262: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                convertValueToString = { context.getString(it.stringRes) },
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/screens/SettingsScreen.kt:366: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                items = KeyboardLanguage.entries.sortedBy { context.getString(it.language) },
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/screens/SettingsScreen.kt:367: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                convertValueToString = { context.getString(it.language) },
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/java/com/atharok/btremote/ui/screens/ThirdLibrariesScreen.kt:115: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+            uriHandler.openUri(context.getString(urlId))
+                               ~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "LocalContextGetResourceValueCall":
+   Changes to the Configuration object will not cause LocalContext.current
+   reads to be invalidated, so calls to APIs such as Context.getString() will
+   not be updated when the Configuration changes, and so stale values might be
+   used. Instead, you can use Compose APIs such as stringResource,
+   colorResource, and painterResource - or LocalResources.current and query
+   properties from Resources directly. Using these APIs will invalidate
+   callers when the Configuration changes, to ensure that these calls reflect
+   the latest values.
+
+   Vendor: Jetpack Compose
+   Identifier: androidx.compose.ui
+   Feedback: https://issuetracker.google.com/issues/new?component=612128
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:11: Error: "app_name" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="app_name">Bluetooth Remote</string>
+            ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:12: Error: "open" is not translated in "cs" (Czech) or "da" (Danish) [MissingTranslation]
+    <string name="open">Open</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:13: Error: "close" is not translated in "da" (Danish) [MissingTranslation]
+    <string name="close">Close</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:14: Error: "error" is not translated in "da" (Danish) [MissingTranslation]
+    <string name="error">Error</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:15: Error: "retry" is not translated in "cs" (Czech) or "da" (Danish) [MissingTranslation]
+    <string name="retry">Retry</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:18: Error: "bluetooth_not_supported_message" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_not_supported_message">Your device does not support Bluetooth.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:21: Error: "permission" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="permission">Permission</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:22: Error: "bluetooth_permission_not_granted" is not translated in "br" (Breton), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="bluetooth_permission_not_granted">Permission not granted</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:23: Error: "bluetooth_permission_message" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_permission_message">You must authorize access to Bluetooth.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:24: Error: "bluetooth_permission_button" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_permission_button">Authorize</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:25: Error: "bluetooth_permission_denied_message" is not translated in "br" (Breton), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="bluetooth_permission_denied_message">You\'ve denied Bluetooth access.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:28: Error: "activation" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="activation">Activation</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:29: Error: "bluetooth_disabled_info" is not translated in "br" (Breton), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="bluetooth_disabled_info">Bluetooth disabled</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:30: Error: "bluetooth_disabled_message" is not translated in "br" (Breton), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="bluetooth_disabled_message">The Bluetooth on your device must be enabled to connect to the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:31: Error: "bluetooth_enabled_button" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_enabled_button">Enable Bluetooth</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:34: Error: "devices" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="devices">Devices</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:35: Error: "paired_devices" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="paired_devices">Paired devices</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:36: Error: "unpair_device" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="unpair_device">Unpair device</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:37: Error: "unpair" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="unpair">Unpair</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:38: Error: "unpair_device_warning_message" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="unpair_device_warning_message">This device will be completely unpaired from your device. Do you really want to continue?</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:39: Error: "unpair_device_successful" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="unpair_device_successful">The device has been successfully dissociated.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:40: Error: "unpair_device_failure" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="unpair_device_failure">Failure! The device could not be dissociated.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:41: Error: "automatic_connect" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="automatic_connect">Automatic Connection</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:42: Error: "enabled_automatic_connection_message" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="enabled_automatic_connection_message">Do you want to automatically connect to this device on app startup?</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:43: Error: "disabled_automatic_connection_message" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="disabled_automatic_connection_message">Do you want to disable the automatic connection?</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:44: Error: "automatic_shorten" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="automatic_shorten">Auto</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:45: Error: "favorites" is not translated in "br" (Breton), "cs" (Czech), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="favorites">Favorites</string>
+            ~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:46: Error: "add_to_favorites" is not translated in "br" (Breton), "cs" (Czech), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="add_to_favorites">Add to favorites</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:47: Error: "remove_from_favorites" is not translated in "br" (Breton), "cs" (Czech), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="remove_from_favorites">Remove from favorites</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:48: Error: "no_device_registered" is not translated in "iw" (Hebrew), "br" (Breton), "cs" (Czech), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="no_device_registered">No device is registered on this device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:51: Error: "pairing_a_device" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="pairing_a_device">Pairing a device</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:52: Error: "available_devices" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="available_devices">Available devices</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:53: Error: "bluetooth_pairing_device_not_found" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_pairing_device_not_found">No device has been detected.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:54: Error: "refresh" is not translated in "br" (Breton) or "da" (Danish) [MissingTranslation]
+    <string name="refresh">Refresh</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:57: Error: "pairing_from_the_remote_device" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="pairing_from_the_remote_device">Pairing from the remote device</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:58: Error: "name_of_this_device" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish) [MissingTranslation]
+    <string name="name_of_this_device">Name of this device : %1$s.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:59: Error: "pairing_from_a_remote_device_intro_title" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_intro_title">Guide to pair a device from the remote device</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:60: Error: "pairing_from_a_remote_device_intro_content" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_intro_content">On some devices, Bluetooth visibility may be disabled, preventing them from being detected by the app. This guide will help you resolve the issue by explaining how to pair your devices directly from the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:61: Error: "pairing_from_a_remote_device_step_1_title" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_1_title">1. Enable Bluetooth visibility</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:62: Error: "pairing_from_a_remote_device_step_1_content_1" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_1_content_1">You must first enable Bluetooth visibility on this device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:63: Error: "pairing_from_a_remote_device_step_1_content_2" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_1_content_2">This device should be visible to other devices under the name: %1$s.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:64: Error: "enabled_bluetooth_visibility" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="enabled_bluetooth_visibility">Enabled Bluetooth visibility</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:65: Error: "pairing_from_a_remote_device_step_2_title" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_2_title">2. Pair the two devices</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:66: Error: "pairing_from_a_remote_device_step_2_content_1" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_2_content_1">On the remote device:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:67: Error: "pairing_from_a_remote_device_step_2_content_2" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_2_content_2">- Open the Bluetooth settings.\n- Select the option to pair a new device.\n- The device \"%1$s\" should appear in the list of available devices.\n- Select the device \"%1$s\" to initiate pairing.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:68: Error: "pairing_from_a_remote_device_step_2_content_3" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_2_content_3">A pairing confirmation request should appear on both devices. You must accept this request on both devices to complete the Bluetooth pairing.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:69: Error: "pairing_from_a_remote_device_step_2_content_4" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_2_content_4">If no confirmation request appears, restart Bluetooth on the remote device and repeat the previous steps.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:70: Error: "pairing_from_a_remote_device_step_3_title" is not translated in "br" (Breton), "cs" (Czech), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_3_title">3. Disconnect the devices</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:71: Error: "pairing_from_a_remote_device_step_3_content_1" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_3_content_1">If the pairing was successful, the Android device should automatically connect to the remote device. However, this connection does not use the HID (Human Interface Device) protocol, which prevents the remote control from working. To resolve this issue:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:72: Error: "pairing_from_a_remote_device_step_3_content_2" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_3_content_2">- Go to the Bluetooth settings on your device.\n- Manually disconnect the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:73: Error: "open_bluetooth_settings" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="open_bluetooth_settings">Open the Bluetooth settings</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:74: Error: "pairing_from_a_remote_device_step_4_title" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_4_title">4. Finalization</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:75: Error: "pairing_from_a_remote_device_step_4_content" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="pairing_from_a_remote_device_step_4_content">If you have followed all the previous steps, the pairing was successful, and you have disconnected both devices, you can select the \"%1$s\" button. The remote device should appear in the list of paired devices. Select it to establish the connection using the HID protocol.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:76: Error: "done" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="done">Done</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:77: Error: "unknown" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="unknown">unknown</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:80: Error: "enter_bluetooth_address_manually" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="enter_bluetooth_address_manually">Enter Bluetooth address manually</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:81: Error: "bluetooth_address" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="bluetooth_address">Bluetooth address</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:82: Error: "bluetooth_address_prompt" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="bluetooth_address_prompt">Please enter the Bluetooth address of the remote device:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:83: Error: "bluetooth_address_wrong_format" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="bluetooth_address_wrong_format">The entered address is in the wrong format. It must contain 6 pairs of hexadecimal characters.\nExample: 00:1A:2B:3C:4D:5E.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:86: Error: "connection" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="connection">Connection</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:87: Error: "bluetooth_device_connecting_message" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_device_connecting_message">Connecting to \"%1$s\" device…</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:88: Error: "bluetooth_device_disconnecting_message" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_device_disconnecting_message">Disconnecting \"%1$s\"…</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:89: Error: "bluetooth_failed_to_register_app_message" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="bluetooth_failed_to_register_app_message">Failure to register the application. Please ensure that no other Bluetooth service is running in the background. If the error persists, it\'s possible that the Bluetooth process was unexpectedly interrupted. To fix this issue, please disable the Bluetooth on your device, then re-enable it.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:90: Error: "bluetooth_failed_to_connect_to_device" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="bluetooth_failed_to_connect_to_device">The attempt to connect to the remote device failed.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:91: Error: "bluetooth_failed_try_again" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="bluetooth_failed_try_again">Please try again.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:94: Error: "remote" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="remote">Remote</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:95: Error: "more" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="more">More</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:96: Error: "disconnect" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="disconnect">Disconnect</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:97: Error: "direction_arrows" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="direction_arrows">Direction arrows</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:98: Error: "more_buttons" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="more_buttons">More Buttons</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:101: Error: "connect" is not translated in "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="connect">Connect</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:102: Error: "media_controls" is not translated in "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="media_controls">Media controls</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:105: Error: "settings" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="settings">Settings</string>
+            ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:106: Error: "appearance" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="appearance">Appearance</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:107: Error: "theme" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="theme">Theme</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:108: Error: "theme_system" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="theme_system">System</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:109: Error: "theme_light" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="theme_light">Light</string>
+            ~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:110: Error: "theme_dark" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="theme_dark">Dark</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:111: Error: "theme_black" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="theme_black">True black for the dark theme</string>
+            ~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:112: Error: "theme_black_oled_info" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="theme_black_oled_info">Uses less energy on OLED screens</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:113: Error: "dynamic_colors" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="dynamic_colors">Dynamic colors</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:114: Error: "full_screen" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="full_screen">Full screen</string>
+            ~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:115: Error: "mouse_pointer_speed" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="mouse_pointer_speed">Pointer speed</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:116: Error: "mouse_scroll_speed" is not translated in "de" (German), "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="mouse_scroll_speed">Scroll speed</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:117: Error: "invert_mouse_scrolling_direction" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="invert_mouse_scrolling_direction">Invert the scrolling direction</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:118: Error: "use_the_gyroscope_to_control_the_mouse" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="use_the_gyroscope_to_control_the_mouse">Use the gyroscope to control the mouse</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:119: Error: "keyboard_and_input_field" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_and_input_field">Keyboard and input field</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:120: Error: "clear_input_field" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="clear_input_field">Clear input field after sending text</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:121: Error: "integrate_advanced_keyboard_into_the_view" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="integrate_advanced_keyboard_into_the_view">Integrate the advanced keyboard into the view</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:122: Error: "user_interface" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="user_interface">Interface</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:123: Error: "use_minimalist_interface" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="use_minimalist_interface">Use the minimalist interface</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:124: Error: "use_mouse_navigation_by_default" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="use_mouse_navigation_by_default">Use mouse navigation by default</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:125: Error: "minimalist_interface_info" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="minimalist_interface_info">Does not display the TV channel buttons</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:126: Error: "navigation_mode" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="navigation_mode">Navigation Mode</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:127: Error: "d_pad" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="d_pad">D-pad</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:128: Error: "d_pad_description" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="d_pad_description">Navigation via directional controls</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:129: Error: "touchpad" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="touchpad">Touchpad</string>
+            ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:130: Error: "touchpad_description" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="touchpad_description">Navigation via touch gestures</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:131: Error: "use_enter_for_selection_title" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="use_enter_for_selection_title">Use the Enter key for selection</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:132: Error: "use_enter_for_selection_summary" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="use_enter_for_selection_summary">Enable this option only if the select button does not work</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:133: Error: "assign_action_volume_up_button" is not translated in "de" (German), "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="assign_action_volume_up_button">Assign an action to the volume up button</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:134: Error: "assign_action_volume_down_button" is not translated in "de" (German), "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="assign_action_volume_down_button">Assign an action to the volume down button</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:135: Error: "advanced_options" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="advanced_options">Advanced Options</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:136: Error: "show_remote_buttons_in_notification" is not translated in "de" (German), "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="show_remote_buttons_in_notification">Show remote buttons in notification</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:137: Error: "hide_bluetooth_activation_button" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="hide_bluetooth_activation_button">Hide Bluetooth activation button at app startup</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:138: Error: "about" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="about">About</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:139: Error: "language" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="language">Language</string>
+            ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:140: Error: "third_party_library" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="third_party_library">Third-party libraries</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:141: Error: "website" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="website">Website</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:142: Error: "source_code" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="source_code">Source code</string>
+            ~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:143: Error: "code_version" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="code_version">Version %1$s</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:144: Error: "default_option" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="default_option">Default</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:147: Error: "keyboard" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard">Keyboard</string>
+            ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:148: Error: "keyboard_language" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_language">Keyboard language</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:149: Error: "keyboard_language_info" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_language_info">Ensure that the selected keyboard language matches the one configured on the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:150: Error: "advanced_keyboard" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="advanced_keyboard">Advanced keyboard</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:151: Error: "keyboard_english_us" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_english_us">English (United States)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:152: Error: "keyboard_english_uk" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_english_uk">English (United Kingdom)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:153: Error: "keyboard_spanish" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_spanish">Spanish</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:154: Error: "keyboard_french" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_french">French</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:155: Error: "keyboard_german" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_german">German</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:156: Error: "keyboard_russian" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_russian">Russian</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:157: Error: "keyboard_czech" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_czech">Czech</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:158: Error: "keyboard_polish" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_polish">Polish</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:159: Error: "keyboard_portuguese" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_portuguese">Portuguese</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:160: Error: "keyboard_portuguese_br" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_portuguese_br">Portuguese (Brazil)</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:161: Error: "keyboard_greek" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_greek">Greek</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:162: Error: "keyboard_turkish" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_turkish">Turkish</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:163: Error: "keyboard_hebrew" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="keyboard_hebrew">Hebrew</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:164: Error: "keyboard_bulgarian" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="keyboard_bulgarian">Bulgarian</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:165: Error: "keyboard_ukrainian" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="keyboard_ukrainian">Ukrainian</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:166: Error: "keyboard_persian" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="keyboard_persian">Persian</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:167: Error: "keyboard_arabic" is not translated in "de" (German), "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="keyboard_arabic">Arabic</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:168: Error: "direct_input" is not translated in "de" (German), "ru" (Russian), "pt" (Portuguese), "bg" (Bulgarian), "el" (Greek), "fil" (Filipino; Pilipino), "fr" (French), "es" (Spanish), "iw" (Hebrew), "zh" (Chinese), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="direct_input">Direct Input</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:169: Error: "send" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="send">Send</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:170: Error: "enter" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="enter">Enter</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:171: Error: "escape" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="escape">Esc</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:172: Error: "delete" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="delete">Delete</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:173: Error: "keyboard_tab" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="keyboard_tab">Tab</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:174: Error: "space_bar" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="space_bar">Space Bar</string>
+            ~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:175: Error: "print_screen" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="print_screen">Print Screen</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:176: Error: "shift" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="shift">Shift</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:177: Error: "meta" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "pl" (Polish), "da" (Danish) [MissingTranslation]
+    <string name="meta">Meta</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:178: Error: "ctrl" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="ctrl">Ctrl</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:179: Error: "alt" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="alt">Alt</string>
+            ~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:180: Error: "alt_gr" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="alt_gr">Alt Gr</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:181: Error: "page_up" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="page_up">Page Up</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:182: Error: "page_down" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="page_down">Page Down</string>
+            ~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:185: Error: "pick" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="pick">Pick</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:186: Error: "up" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="up">Up</string>
+            ~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:187: Error: "down" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="down">Down</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:188: Error: "left" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="left">Left</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:189: Error: "right" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="right">Right</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:190: Error: "play_pause" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="play_pause">Play / Pause</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:191: Error: "play" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="play">Play</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:192: Error: "pause" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="pause">Pause</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:193: Error: "stop" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="stop">Stop</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:194: Error: "repeat" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="repeat">Repeat</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:195: Error: "previous" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="previous">Previous</string>
+            ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:196: Error: "next" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="next">Next</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:197: Error: "previous_track" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="previous_track">Previous Track</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:198: Error: "next_track" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="next_track">Next Track</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:199: Error: "rewind" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="rewind">Rewind</string>
+            ~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:200: Error: "forward" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="forward">Forward</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:201: Error: "volume_up" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="volume_up">Volume +</string>
+            ~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:202: Error: "volume_down" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="volume_down">Volume -</string>
+            ~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:203: Error: "brightness_up" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="brightness_up">Brightness +</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:204: Error: "brightness_down" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="brightness_down">Brightness -</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:205: Error: "mute" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="mute">Mute</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:206: Error: "home" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="home">Home</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:207: Error: "back" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="back">Back</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:208: Error: "standby" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="standby">Standby</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:209: Error: "next_channel" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="next_channel">Next channel</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:210: Error: "previous_channel" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="previous_channel">Previous channel</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:211: Error: "power" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="power">Power</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:212: Error: "menu" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="menu">Menu</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:213: Error: "closed_captions" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="closed_captions">Closed captions</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:214: Error: "screenshot" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="screenshot">Screenshot</string>
+            ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:215: Error: "tv" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="tv">TV</string>
+            ~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:216: Error: "red_menu_button" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="red_menu_button">Red</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:217: Error: "green_menu_button" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="green_menu_button">Green</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:218: Error: "blue_menu_button" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="blue_menu_button">Blue</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:219: Error: "yellow_menu_button" is not translated in "fil" (Filipino; Pilipino), "iw" (Hebrew), "br" (Breton), "cs" (Czech), "ar" (Arabic), "uk" (Ukrainian), "fa" (Persian), "pl" (Polish), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="yellow_menu_button">Yellow</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:222: Error: "mouse" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="mouse">Mouse</string>
+            ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:223: Error: "mouse_click_left" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="mouse_click_left">Click left</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:224: Error: "mouse_click_right" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="mouse_click_right">Click right</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:225: Error: "mouse_click_middle" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="mouse_click_middle">Click middle</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:226: Error: "mouse_wheel_up" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="mouse_wheel_up">Swipe up</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:227: Error: "mouse_wheel_down" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="mouse_wheel_down">Swipe down</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:228: Error: "mouse_pad_tap" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="mouse_pad_tap">Tap</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:231: Error: "notification_channel_name" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="notification_channel_name">Bluetooth HID connection</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:232: Error: "connected_on" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="connected_on">Connected on %1$s</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:233: Error: "connected_off" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="connected_off">No devices connected</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:236: Error: "information" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "nl" (Dutch) [MissingTranslation]
+    <string name="information">Information</string>
+            ~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:237: Error: "help_info_message" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="help_info_message">If you experience any issues, please check the help section.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:238: Error: "help_info_hid_service_not_initialized_message" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="help_info_hid_service_not_initialized_message">The HID service has not been initialized. Please consult the help section.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:240: Error: "help" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish) [MissingTranslation]
+    <string name="help">Help</string>
+            ~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:242: Error: "help_select_device_from_list" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_select_device_from_list">Select the device you wish to connect with from the list of paired devices.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:243: Error: "help_missing_device_title" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_missing_device_title">Missing device</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:244: Error: "help_missing_device_message" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_missing_device_message">If the remote device does not appear in the list of paired devices, you need to pair it by pressing the icon in the top bar.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:245: Error: "help_device_failed_connection_title" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_title">Connection failure</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:246: Error: "help_device_failed_connection_message_1" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_message_1">If you\'re unable to connect to the remote device, please make sure to follow the instructions below:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:247: Error: "help_device_failed_connection_check_1" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_check_1">• Ensure that the remote device operates on Android or macOS/iOS/iPadOS/tvOS/Windows/Linux.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:248: Error: "help_device_failed_connection_check_2" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_check_2">• Make sure that the Bluetooth function is enabled on the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:249: Error: "help_device_failed_connection_check_3" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_check_3">• Make sure that both devices are close enough to each other.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:250: Error: "help_device_failed_connection_check_4" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_check_4">• Try connecting several times.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:251: Error: "help_device_failed_connection_message_2" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_message_2">If despite these checks you still cannot connect to the remote device, proceed as follows:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:252: Error: "help_device_failed_connection_check_5" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_check_5">• Unpair the two devices, both on the current device and on the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:253: Error: "help_device_failed_connection_check_6" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_check_6">• Re-pair the two devices by pressing the icon located in the top bar.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:254: Error: "help_device_failed_connection_message_3" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_device_failed_connection_message_3">If the problem persists, ensure that the Bluetooth sensor of your devices is not defective.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:256: Error: "help_paring_select_device_from_list" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_paring_select_device_from_list">Select the device you want to pair with from the list of available devices.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:257: Error: "help_pairing_missing_device_message_1" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_pairing_missing_device_message_1">If the device you wish to pair with does not appear, follow the instructions below:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:259: Error: "help_pairing_missing_device_check_2" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_pairing_missing_device_check_2">• Ensure that Bluetooth visibility is enabled on the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:261: Error: "help_pairing_missing_device_check_location_for_android_11_or_less" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_pairing_missing_device_check_location_for_android_11_or_less">• Ensure that location services are enabled on your device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:262: Error: "help_pairing_connection_initialization_error_message_1" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_pairing_connection_initialization_error_message_1">If you have successfully paired both devices but encounter errors \"%1$s\" or \"%2$s\":</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:263: Error: "help_pairing_device_failed_connection_message_1" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_pairing_device_failed_connection_message_1">If you have successfully paired both devices but are unable to connect to the remote device, please make sure to follow the instructions below:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:265: Error: "help_remote_control_buttons_are_not_working_title" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_remote_control_buttons_are_not_working_title">Remote control buttons</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:266: Error: "help_remote_control_buttons_are_not_working_message" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_remote_control_buttons_are_not_working_message">If the keyboard, mouse, or certain buttons are not functioning, follow the instructions below:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:268: Error: "help_remote_control_buttons_are_not_working_check_2" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_remote_control_buttons_are_not_working_check_2">• Disconnect from the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:269: Error: "help_remote_control_buttons_are_not_working_check_3" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_remote_control_buttons_are_not_working_check_3">• Unpair the devices, on both this device and the remote device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:270: Error: "help_remote_control_buttons_are_not_working_check_4" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_remote_control_buttons_are_not_working_check_4">• Then, re-pair the two devices using this application.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:271: Error: "help_remote_control_buttons_are_not_working_message_2" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "da" (Danish), "ca" (Catalan), "nl" (Dutch) [MissingTranslation]
+    <string name="help_remote_control_buttons_are_not_working_message_2">Each application using the HID protocol may rely on a different profile. If you have previously paired your devices through another application, you might need to re-pair them to reset the profile. Without this step, the buttons may not function as expected or might send incorrect values.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:272: Error: "help_keyboard_wrong_character_sent_message" is not translated in "br" (Breton), "ar" (Arabic), "da" (Danish), "ca" (Catalan) [MissingTranslation]
+    <string name="help_keyboard_wrong_character_sent_message">If the characters being sent are incorrect, you need to configure the physical keyboard on the remote device to match the language selected in the application settings.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:274: Error: "help_hid_service_not_initialized_title" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="help_hid_service_not_initialized_title">HID Service Not Initialized</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:275: Error: "help_hid_service_not_initialized_message_1" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="help_hid_service_not_initialized_message_1">If a message indicates that the HID service has not been initialized, please go to your device\'s developer options and look for the option \"Disable Bluetooth HID Device Profile\":</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:276: Error: "help_hid_service_not_initialized_message_2" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="help_hid_service_not_initialized_message_2">• If this option is available, disable it, then restart your device. After restarting, the HID profile should function normally.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:277: Error: "help_hid_service_not_initialized_message_3" is not translated in "br" (Breton), "cs" (Czech), "ar" (Arabic), "fa" (Persian), "da" (Danish), "ca" (Catalan), "nl" (Dutch), "tr" (Turkish) [MissingTranslation]
+    <string name="help_hid_service_not_initialized_message_3">• If this option is not available, your device may not support the HID profile. In that case, unfortunately, you won\'t be able to use this application on this device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "MissingTranslation":
+   If an application has more than one locale, then all the strings declared
+   in one language should also be translated in all other languages.
+
+   If the string should not be translated, you can add the attribute
+   translatable="false" on the <string> element, or you can define all your
+   non-translatable strings in a resource file called donottranslate.xml. Or,
+   you can ignore the issue with a tools:ignore="MissingTranslation"
+   attribute.
+
+   You can tell lint (and other tools) which language is the default language
+   in your res/values/ folder by specifying tools:locale="languageCode" for
+   the root <resources> element in your resource file. (The tools prefix
+   refers to the namespace declaration http://schemas.android.com/tools.)
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values-es/strings.xml:154: Warning: "Interface" is a common misspelling; did you mean "Interfaz"? [Typos]
+    <string name="pairing_from_a_remote_device_step_3_content_1">Si el emparejamiento fue exitoso, el dispositivo Android debe de conectarse automáticamente al dispositivo remoto. Sin embargo, esta conexión no usa el protocolo HID (Human Interface Device), lo cual evita que el control remoto funcione. Para resolver este problema:</string>
+                                                                                                                                                                                                                                              ~~~~~~~~~
+
+   Explanation for issues of type "Typos":
+   This check looks through the string definitions, and if it finds any words
+   that look like likely misspellings, they are flagged.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/AndroidManifest.xml:40: Warning: The language br (Breton) is present in this project, but not declared in the localeConfig resource [UnusedTranslation]
+        android:localeConfig="@xml/locales_config"
+                              ~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedTranslation":
+   If an application defines a translation for a language which is not
+   included in the app's localeConfig file (when declared in the manifest),
+   that language will be "unused"; it will not be presented to the user.
+   Usually this means you have forgotten to include it in the locale config
+   file.
+
+   https://developer.android.com/about/versions/13/features/app-languages
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/mipmap-anydpi-v26: Warning: This folder configuration (v26) is unnecessary; minSdkVersion is 28. Merge all the resources in this folder into mipmap-anydpi. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/colors.xml:3: Warning: The resource R.color.purple_200 appears to be unused [UnusedResources]
+    <color name="purple_200">#FFBB86FC</color>
+           ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/colors.xml:4: Warning: The resource R.color.purple_500 appears to be unused [UnusedResources]
+    <color name="purple_500">#FF6200EE</color>
+           ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/colors.xml:5: Warning: The resource R.color.purple_700 appears to be unused [UnusedResources]
+    <color name="purple_700">#FF3700B3</color>
+           ~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/colors.xml:6: Warning: The resource R.color.teal_200 appears to be unused [UnusedResources]
+    <color name="teal_200">#FF03DAC5</color>
+           ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/colors.xml:7: Warning: The resource R.color.teal_700 appears to be unused [UnusedResources]
+    <color name="teal_700">#FF018786</color>
+           ~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/colors.xml:8: Warning: The resource R.color.black appears to be unused [UnusedResources]
+    <color name="black">#FF000000</color>
+           ~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:25: Warning: The resource R.string.bluetooth_permission_denied_message appears to be unused [UnusedResources]
+    <string name="bluetooth_permission_denied_message">You\'ve denied Bluetooth access.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:36: Warning: The resource R.string.unpair_device appears to be unused [UnusedResources]
+    <string name="unpair_device">Unpair device</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:90: Warning: The resource R.string.bluetooth_failed_to_connect_to_device appears to be unused [UnusedResources]
+    <string name="bluetooth_failed_to_connect_to_device">The attempt to connect to the remote device failed.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:91: Warning: The resource R.string.bluetooth_failed_try_again appears to be unused [UnusedResources]
+    <string name="bluetooth_failed_try_again">Please try again.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:122: Warning: The resource R.string.user_interface appears to be unused [UnusedResources]
+    <string name="user_interface">Interface</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:175: Warning: The resource R.string.print_screen appears to be unused [UnusedResources]
+    <string name="print_screen">Print Screen</string>
+            ~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:208: Warning: The resource R.string.standby appears to be unused [UnusedResources]
+    <string name="standby">Standby</string>
+            ~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:225: Warning: The resource R.string.mouse_click_middle appears to be unused [UnusedResources]
+    <string name="mouse_click_middle">Click middle</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:228: Warning: The resource R.string.mouse_pad_tap appears to be unused [UnusedResources]
+    <string name="mouse_pad_tap">Tap</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:262: Warning: The resource R.string.help_pairing_connection_initialization_error_message_1 appears to be unused [UnusedResources]
+    <string name="help_pairing_connection_initialization_error_message_1">If you have successfully paired both devices but encounter errors \"%1$s\" or \"%2$s\":</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/tmp/android-bt-remote-review-01a1ba37/src/app/src/main/res/values/strings.xml:281: Warning: The resource R.string.empty appears to be unused [UnusedResources]
+    <string name="empty" translatable="false" />
+            ~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests=true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests=true.
+
+   Available options:
+
+   **skip-libraries** (default is true):
+   Whether the unused resource check should skip reporting unused resources in libraries.
+
+   Many libraries will declare resources that are part of the library surface; other modules depending on the library will also reference the resources. To avoid reporting all these resources as unused (in the context of a library), the unused resource check normally skips reporting unused resources in libraries. Instead, run the unused resource check on the consuming app module (along with `checkDependencies=true`).
+
+   However, there are cases where you want to check that all the resources declared in a library are used; in that case, you can disable the skip option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UnusedResources">
+           <option name="skip-libraries" value="true" />
+       </issue>
+   </lint>
+   ```
+
+234 errors, 37 warnings
