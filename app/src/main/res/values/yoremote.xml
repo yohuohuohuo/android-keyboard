@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- YoRemote 首版控制界面固定使用中文，原版设置页沿用原有翻译。 -->
+    <string name="control_trackpad" translatable="false">触控板</string>
+    <string name="control_keyboard" translatable="false">键盘</string>
+    <string name="control_quick_input" translatable="false">快捷输入</string>
+    <string name="control_remote" translatable="false">遥控</string>
+    <string name="control_connected" translatable="false">已连接</string>
+    <string name="control_disconnected" translatable="false">未连接</string>
+    <string name="control_functions" translatable="false">功能</string>
+    <string name="control_letters" translatable="false">字母</string>
+    <string name="control_landscape" translatable="false">横屏</string>
+    <string name="control_auto_orientation" translatable="false">自动方向</string>
+    <string name="control_report_failed" translatable="false">蓝牙未受理按键报告，请检查连接；不会自动重发。</string>
+    <string name="quick_hint" translatable="false">Mac 先切中文输入法，手机输入英文或拼音；不直接发送汉字。</string>
+    <string name="quick_edit" translatable="false">英文 / 拼音</string>
+    <string name="quick_direct" translatable="false">边输入边发（辅助模式）</string>
+    <string name="quick_direct_hint" translatable="false">输入后自动发送；候选显示在 Mac。</string>
+    <string name="quick_ready" translatable="false">普通发送不附加回车；候选显示在 Mac。</string>
+    <string name="quick_failed" translatable="false">发送失败，Mac 可能收到部分字符；原文已保留，请核对后手动处理。</string>
+    <string name="quick_unsupported" translatable="false">包含当前键盘无法映射的字符。请使用英文或拼音，原文已保留。</string>
+    <string name="quick_cancelled" translatable="false">发送已中止，Mac 可能收到部分字符；请核对原文，不会自动重发。</string>
+    <string name="quick_attempt" translatable="false">本次发送原文，请对照 Mac 核对</string>
+</resources>

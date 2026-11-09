@@ -1,57 +1,66 @@
-# Bluetooth HID Remote for Android
+# YoRemote
 
-[![Stars](https://img.shields.io/github/stars/jqssun/android-bt-remote?label=stars&logo=GitHub)](https://github.com/jqssun/android-bt-remote)
-[![GitHub](https://img.shields.io/github/downloads/jqssun/android-bt-remote/total?label=GitHub&logo=GitHub)](https://github.com/jqssun/android-bt-remote/releases)
-[![license](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![build](https://img.shields.io/github/actions/workflow/status/jqssun/android-bt-remote/apk.yml?label=build)](https://github.com/jqssun/android-bt-remote/actions/workflows/apk.yml)
-[![release](https://img.shields.io/github/v/release/jqssun/android-bt-remote)](https://github.com/jqssun/android-bt-remote/releases)
+YoRemote 将 Android 手机作为蓝牙 HID 触控板、键盘和遥控器，直接控制已配对的 Mac 或其他支持蓝牙输入的设备，无需安装电脑接收端。
 
-**Remote** turns any Android device into a Bluetooth (Classic) HID keyboard, mouse, and trackpad designed for all platforms that accept generic Bluetooth input. 
+现在是普通 Android 工程：**Android Studio 直接打开本仓库根目录，修改 `app/` 后正常提交 Git。** 不再使用子模块、补丁生成或源码重放。
 
-It is built on top of the original [BT Remote designed for Android TV](https://gitlab.com/Atharok/BtRemote) but instead made to work with macOS, iOS (+ iPadOS), Windows, Android, ChromeOS, Linux (+ SteamOS) as well as all other platforms that support Bluetooth input devices.
+## 代码与版本
 
-Unlike network remote-control tools, this does not require a companion application on the target. The Android device presents itself as a generic Bluetooth Human Interface Device (HID) and sends HID-compliant keyboard reports, media controls, and mouse input directly over Bluetooth.
+- 应用源码和资源：`app/src/main/`；测试：`app/src/test/`、`app/src/androidTest/`。
+- 版本号、包名、构建类型和签名配置：`app/build.gradle.kts`。
+- 依赖版本：`gradle/libs.versions.toml`；Wrapper：`gradle/wrapper/`。
+- 当前版本：0.1.9 / versionCode 17；显示名：YoRemote。
+- namespace：`com.atharok.btremote`；基础 applicationId：`io.github.yohuohuohuo.btremote`。
+- 日常测试用 `defaultOptimized`：包名带 `.debug`，使用 Debug 证书，开启 R8 和资源裁剪，关闭调试与 Debug tooling。
 
-[<img height="48" alt="Get it on Google Play" src="https://jqssun.github.io/images/badges/google-play-store.svg">](https://play.google.com/store/apps/details?id=io.github.jqssun.btremote)
-[<img height="48" alt="Get it on F-Droid" src="https://jqssun.github.io/images/badges/fdroid.svg">](https://f-droid.org/packages/io.github.jqssun.btremote)
-[<img height="48" alt="Get it on GitHub" src="https://jqssun.github.io/images/badges/github.svg">](https://github.com/jqssun/android-bt-remote/releases/latest)
+`artifacts/` 保存本地 APK、签名材料、历史构建及证据，全部被 Git 忽略。不要在那里继续开发，也不要向 Git 提交密钥或 APK。
 
-<video loop src='https://github.com/user-attachments/assets/9bddf132-a861-4693-b408-2539646b7e8b' alt="demo" width="1200" style="display: block; margin: auto;"></video>
+## 开发与构建
 
-## Compatibility
+需要 JDK 21、Android SDK 36 和 Build Tools 36。Android Studio 打开根目录并完成 SDK 配置后，在根目录执行：
 
-- HID device (controller): Android 9.0+ with Bluetooth
-- HID host (target): 
-    - Android 4 and later
-    - Android TV, Google TV, and Fire OS
-    - ChromeOS
-    - iOS 13 (iPadOS 13) and later
-    - iOS 4 and later (keyboard only)
-    - tvOS 9.2 and later
-    - Mac OS X 10.3 and later
-    - Linux kernel 2.6 and later
-    - SteamOS
-    - Windows XP Service Pack 2 and later
-
-## Implementation
-
-**Remote** registers with Android's `BluetoothHidDevice` profile and sends HID reports for keyboard, mouse, and remote control actions. This build uses the upstream project as a submodule in [`src`](src) with additional modifications in [`patches`](patches).
-
-```shell
-git submodule update --init --recursive
-./build.sh
-cd artifacts/yoremote-source
-./gradlew testDefaultDebugUnitTest assembleDefaultDebug assembleDefaultOptimized assembleDefaultDebugAndroidTest lintDefaultDebug lintDefaultOptimized
+```sh
+./gradlew --no-daemon testDefaultDebugUnitTest assembleDefaultOptimized
 ```
 
-当前本地定制版为 **YoRemote**，基础包名 `io.github.yohuohuohuo.btremote`，Debug 后缀 `.debug`。需要 JDK 21 / SDK 36。`build.sh` 在独立目录准备源码，不修改 `src` 子模块；已有目标目录会拒绝覆盖，可用 `./build.sh <新的目录>` 重放。Debug 更新需沿用自己的 `ANDROID_USER_HOME` 下的签名，不要把密钥提交到 Git。
+优化 APK：`app/build/outputs/apk/default/optimized/app-default-optimized.apk`。
 
-四页、安装包和真机验收说明见 [YoRemote 实施与验收](docs/YoRemote实施与验收-2026-11-08.md)。原版和旧 APK 保留供轮流启用对照。外部入口修复见 [0.1.1 草稿恢复](docs/YoRemote外部入口草稿修复-2026-11-09.md)；布局调整见 [0.1.2 定高居中](docs/YoRemote竖屏键盘居中-2026-11-09.md)、[0.1.3 方向键十字布局](docs/YoRemote竖屏方向键十字布局-2026-11-09.md)、[0.1.4 快捷输入布局](docs/YoRemote快捷输入纵向布局-2026-11-09.md)；[0.1.5 固定模式说明](docs/YoRemote快捷输入固定说明-2026-11-09.md) 修复辅助输入闪烁，[0.1.6 简化提示](docs/YoRemote移除成功提示与停止按钮-2026-11-09.md) 移除成功提示和停止按钮，[0.1.7 仅异常提示](docs/YoRemote快捷输入仅异常提示-2026-11-09.md) 进一步移除发送中提示，[0.1.8 弱化说明](docs/YoRemote弱化快捷输入说明-2026-11-09.md) 缩小并淡化辅助文案。
+本机需要覆盖现有安装时，继续使用原 Debug 密钥。macOS 命令行示例：
 
-Check out the [CI](.github/workflows/apk.yml) for more details on reproducible builds.
+```sh
+export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_USER_HOME="$PWD/artifacts/.android-home"
+./gradlew --no-daemon testDefaultDebugUnitTest assembleDefaultOptimized
+```
 
-**0.1.9 优化测试包**：`assembleDefaultOptimized` 继承 Release 的 R8 与资源裁剪，沿用 `.debug` 安装包名和本地 Debug 签名，但关闭调试且不引入 Debug tooling。实测从 71.01 MiB 降到 4.75 MiB（减少 93.31%）；不删功能、语言或 ABI。最新交付、覆盖安装和安全边界见 [体积优化与安全审查](docs/YoRemote体积优化与安全审查-2026-11-09.md)。lint 仍有历史失败，不能称为全部检查通过。
+在本机 Codex 沙箱中可复用已有缓存：`GRADLE_USER_HOME=/private/tmp/android-keyboard-gradle-01a1ba37`。其他开发环境可使用 Gradle 默认缓存。原密钥仅在本地；重新克隆不会带回它，覆盖安装必须使用原证书。
 
-## Credits
+按改动范围补充普通 Debug、instrumentation APK、lint 和真机检查：
 
-- [Atharok](https://gitlab.com/Atharok/BtRemote) for the original BT Remote
+```sh
+./gradlew --no-daemon assembleDefaultDebug assembleDefaultDebugAndroidTest
+./gradlew --no-daemon --continue lintDefaultDebug lintDefaultOptimized
+```
+
+迁移前 lint 为 233 错误 / 42 警告，尚未解决；应记录实际结果，不得关闭规则伪造通过。模拟测试不能代替蓝牙、输入法、入口复用和异常断连的真机验证。
+
+## 提交与推送
+
+1. 直接修改根目录下的源码、资源、测试或 Gradle 文件。版本号只在 `app/build.gradle.kts` 中维护。
+2. 完成与本次改动相关的测试、构建和必要真机回归，将需保留的 APK 另存到 `artifacts/`，不覆盖旧包。
+3. 用 `git status` 和 `git diff` 检查改动，暂存后检查 `git diff --cached`，确认没有密钥、local.properties、缓存或 APK。
+4. 正常提交并推送到目标分支；本项目主分支为 `main`。源码本身随提交保存，无需再导出补丁。
+5. 交付前确认远端提交一致；需要可复现性验证时，在干净 checkout 中直接运行 Gradle，不执行子模块或补丁命令。
+
+GitHub 发布工作流也从根目录直接构建。正式 Release 仍需独立配置发行签名，不要把 Debug 证书当作正式发行密钥。
+
+## 记录与来源
+
+[目录迁移记录](docs/YoRemote普通工程迁移-2026-11-09.md) 是当前工程结构的说明。[0.1.9 体积优化与安全审查](docs/YoRemote体积优化与安全审查-2026-11-09.md) 保留当时的 APK、测试和安全证据；其中 src、补丁、重放命令均是迁移前历史，不再是当前开发流程。
+
+原有四页为“触控板、键盘、快捷输入、遥控”，默认触控板。中文使用手机发送英文/拼音、Mac 日常中文输入法组字，未增加联网、剪贴板同步或电脑接收端。
+
+项目基于 [Atharok 的 BT Remote](https://gitlab.com/Atharok/BtRemote) 与 [jqssun/android-bt-remote](https://github.com/jqssun/android-bt-remote) 定制。历史固定来源为 `56ea84e6b8f16e45c6467768b72e1bcd8f322f72`，旧结构完整保留在本仓库 Git 历史中；今后独立维护 YoRemote，不要求合并回上游。
+
+遵循 [GPL-3.0 许可证](LICENSE)，保留原作者与源文件版权声明。`fastlane/` 为原有商店资料，不是构建输入。

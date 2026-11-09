@@ -1,0 +1,176 @@
+package com.atharok.btremote.data.bluetooth
+
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothHidDevice
+import android.bluetooth.BluetoothHidDeviceAppSdpSettings
+import android.bluetooth.BluetoothProfile
+import android.bluetooth.BluetoothProfile.ServiceListener
+import android.content.Context
+import androidx.annotation.RequiresPermission
+import com.atharok.btremote.common.utils.KEYBOARD_REPORT_ID
+import com.atharok.btremote.common.utils.MOUSE_REPORT_ID
+import com.atharok.btremote.common.utils.REMOTE_REPORT_ID
+import com.atharok.btremote.common.utils.checkBluetoothConnectPermission
+import com.atharok.btremote.common.utils.isMacAddress
+import com.atharok.btremote.domain.entities.DeviceHidConnectionState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import java.util.Locale
+
+class BluetoothHidCore(
+    private val context: Context,
+    private val adapter: BluetoothAdapter?,
+    private val hidSettings: BluetoothHidDeviceAppSdpSettings
+) {
+    private var bluetoothHidDevice: BluetoothHidDevice? = null
+
+    private val _isBluetoothServiceRunning: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val isBluetoothServiceRunning: StateFlow<Boolean> = _isBluetoothServiceRunning
+
+    private val _isBluetoothHidProfileRegistered: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val isBluetoothHidProfileRegistered: StateFlow<Boolean> = _isBluetoothHidProfileRegistered
+
+    private var autoConnectDeviceAddress: String = ""
+
+    // ---- HID Profile ----
+
+    fun startBluetoothHidProfile(autoConnectDeviceAddress: String) {
+        this.autoConnectDeviceAddress = autoConnectDeviceAddress
+        adapter?.getProfileProxy(context, serviceListener, BluetoothProfile.HID_DEVICE)
+    }
+
+    fun stopBluetoothHidProfile() {
+        bluetoothHidDevice?.let { hidDevice ->
+            if (checkBluetoothConnectPermission(context)) {
+                disconnectDevice(hidDevice)
+                hidDevice.unregisterApp()
+            }
+            adapter?.closeProfileProxy(BluetoothProfile.HID_DEVICE, hidDevice)
+        }
+        bluetoothHidDevice = null
+        _deviceHidConnectionState.value = DeviceHidConnectionState()
+        _isBluetoothHidProfileRegistered.value = false
+        _isBluetoothServiceRunning.value = false
+    }
+
+    // ---- BluetoothProfile.ServiceListener implementation ----
+
+    private val serviceListener = object : ServiceListener {
+        override fun onServiceConnected(i: Int, bluetoothProfile: BluetoothProfile?) {
+            if(i == BluetoothProfile.HID_DEVICE) {
+                bluetoothHidDevice = bluetoothProfile as? BluetoothHidDevice?
+                bluetoothHidDevice?.let { hidDevice ->
+                    if (checkBluetoothConnectPermission(context)) {
+                        _isBluetoothHidProfileRegistered.value = hidDevice.registerApp(hidSettings, null, null, Runnable::run, callback)
+                    }
+                }
+            }
+            _isBluetoothServiceRunning.value = true
+        }
+
+        override fun onServiceDisconnected(i: Int) {}
+    }
+
+    // ---- BluetoothHidDevice.Callback implementation ----
+
+    private val callback = object : BluetoothHidDevice.Callback() {
+
+        override fun onAppStatusChanged(pluggedDevice: BluetoothDevice?, registered: Boolean) {
+            super.onAppStatusChanged(pluggedDevice, registered)
+            _isBluetoothHidProfileRegistered.value = registered
+            if(registered && isMacAddress(autoConnectDeviceAddress)) {
+                connectDevice(autoConnectDeviceAddress)
+            }
+        }
+
+        override fun onConnectionStateChanged(device: BluetoothDevice?, state: Int) {
+            super.onConnectionStateChanged(device, state)
+            if (checkBluetoothConnectPermission(context)) {
+                _deviceHidConnectionState.value = DeviceHidConnectionState(state, device?.name ?: "")
+            }
+        }
+    }
+
+    // ---- Device Connection ----
+
+    private var bluetoothDevice: BluetoothDevice? = null
+
+    fun connectDevice(deviceAddress: String): Boolean {
+        if (checkBluetoothConnectPermission(context)) {
+            bluetoothHidDevice?.let {
+                return connectDevice(it, deviceAddress)
+            }
+        }
+        return false
+    }
+
+    fun disconnectDevice(): Boolean {
+        if (checkBluetoothConnectPermission(context)) {
+            bluetoothHidDevice?.let {
+                return disconnectDevice(it)
+            }
+        }
+        return false
+    }
+
+    @RequiresPermission(value = "android.permission.BLUETOOTH_CONNECT")
+    private fun connectDevice(hidDevice: BluetoothHidDevice, deviceAddress: String): Boolean {
+        var isConnected = false
+        bluetoothDevice = adapter?.getRemoteDevice(deviceAddress.uppercase(Locale.getDefault()))
+        bluetoothDevice?.let {
+            isConnected = hidDevice.connect(it)
+        }
+        return isConnected
+    }
+
+    @RequiresPermission(value = "android.permission.BLUETOOTH_CONNECT")
+    private fun disconnectDevice(hidDevice: BluetoothHidDevice): Boolean {
+        var isDisconnected = false
+        bluetoothDevice?.let {
+            sendAndroidReport(hidDevice, it, KEYBOARD_REPORT_ID, byteArrayOf(0, 0))
+            sendAndroidReport(hidDevice, it, MOUSE_REPORT_ID, byteArrayOf(0, 0, 0, 0))
+            sendAndroidReport(hidDevice, it, REMOTE_REPORT_ID, byteArrayOf(0, 0))
+            // disconnect() is called twice because, during my tests on a Pixel 3a, the state
+            // changes to DISCONNECTING but never to DISCONNECTED if the call is made only once.
+            // This error occurs only on this device and not on the others I tested. It seems to
+            // be due to a bug in the library or the device.
+            hidDevice.disconnect(it)
+            isDisconnected = hidDevice.disconnect(it)
+        }
+        bluetoothDevice = null
+        return isDisconnected
+    }
+
+    // ---- StateFlow ----
+
+    private val _deviceHidConnectionState: MutableStateFlow<DeviceHidConnectionState> = MutableStateFlow(
+        DeviceHidConnectionState()
+    )
+    val deviceHidConnectionState: StateFlow<DeviceHidConnectionState> = _deviceHidConnectionState
+
+    // ---- Send Report ----
+
+    @RequiresPermission(value = "android.permission.BLUETOOTH_CONNECT")
+    private fun sendAndroidReport(
+        hidDevice: BluetoothHidDevice,
+        device: BluetoothDevice,
+        id: Int,
+        bytes: ByteArray
+    ): Boolean {
+        return hidDevice.sendReport(device, id, bytes)
+    }
+
+    fun sendReport(id: Int, bytes: ByteArray): Boolean {
+        var success = false
+        bluetoothDevice?.let { device ->
+            bluetoothHidDevice?.let { hidDevice ->
+                if (checkBluetoothConnectPermission(context)) {
+                    success = sendAndroidReport(hidDevice, device, id, bytes)
+                }
+            }
+        }
+        return success
+    }
+
+}

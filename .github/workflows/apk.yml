@@ -23,8 +23,6 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - name: Set TAG
         if: github.event_name == 'push'
@@ -43,14 +41,8 @@ jobs:
           java-version: "21"
           cache: "gradle"
 
-      - name: Patch
-        run: |
-          chmod +x ./build.sh
-          ./build.sh
-
       - name: Build
         run: |
-          cd artifacts/yoremote-source
           echo ${{ secrets.STORE }} | base64 -d > upload.jks
           echo ${{ secrets.LOCAL }} | base64 -d > local.properties
           ./gradlew assembleDefaultRelease bundleDefaultRelease --stacktrace
@@ -63,5 +55,5 @@ jobs:
           name: v${{ env.version }}
           tag_name: v${{ env.version }}
           files: |
-            artifacts/yoremote-source/${{ env.main_project_module }}/build/outputs/apk/default/release/app-default-release.apk
-            artifacts/yoremote-source/${{ env.main_project_module }}/build/outputs/bundle/defaultRelease/app-default-release.aab
+            ${{ env.main_project_module }}/build/outputs/apk/default/release/app-default-release.apk
+            ${{ env.main_project_module }}/build/outputs/bundle/defaultRelease/app-default-release.aab

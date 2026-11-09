@@ -1,2 +1,15 @@
 .DS_Store
 /artifacts/
+/.gradle/
+/.kotlin/
+/.idea/
+/.memsearch/
+**/build/
+**/.cxx/
+**/.externalNativeBuild/
+local.properties
+*.iml
+*.apk
+*.aab
+*.jks
+*.keystore
